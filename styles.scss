@@ -3,15 +3,11 @@
 */
 
 /* Light Palette */
-body {
-  background-color: #fff;
-  color: black;
-}
+@import 'scss/light-mode.scss';
+@import 'scss/dark-mode.scss';
+
 /* Dark Palette */
-body.dark-mode {
-  background-color: black;
-  color: white;
-}
+
 
 .btn-dark-toggle {
   position: absolute;

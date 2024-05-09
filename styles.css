@@ -7,12 +7,12 @@ body {
   color: black;
 }
 
-/* Dark Palette */
 body.dark-mode {
   background-color: black;
   color: white;
 }
 
+/* Dark Palette */
 .btn-dark-toggle {
   position: absolute;
   top: 30px;
