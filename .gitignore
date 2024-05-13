@@ -34,3 +34,9 @@ wp-config.php
 
 # Updgrade
 /wp-content/upgrade/
+
+# Light/Dark Mode CSS Source
+/scss/dark-mode.css
+/scss/dark-mode.css.map
+/scss/light-mode.css
+/scss/light-mode.css.map

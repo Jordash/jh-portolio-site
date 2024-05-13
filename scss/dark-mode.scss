@@ -1,4 +1,16 @@
+/* Dark Variables */
+$dkgray: #707070;
+$nav-border: #8b8989;
+$background: #000;
+$group-border: blue;
+
 body.dark-mode {
-    background-color: black;
+    background-color: $background;
     color: white;
+    nav {
+        border-bottom: 1px solid $nav-border;
+    }
+    .webdev-group, .branding-group, .ecommerce-group, .email-group {
+        border-left: 3px solid $group-border;
+    }
 }

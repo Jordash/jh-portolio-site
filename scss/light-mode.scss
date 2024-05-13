@@ -1,4 +1,16 @@
+/* Light Variables */
+$dkgray: #707070;
+$nav-border: #E0E0E0;
+$background: #fff;
+$group-border: pink;
+
 body {
-    background-color: #fff;
+    background-color: $background;
     color: black;
-  }
+    nav {
+        border-bottom: 1px solid $nav-border;
+    }
+    .webdev-group, .branding-group, .ecommerce-group, .email-group {
+      border-left: 3px solid $group-border;
+    }
+}

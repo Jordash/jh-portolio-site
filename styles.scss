@@ -4,9 +4,9 @@
 
 /* Light Palette */
 @import 'scss/light-mode.scss';
-@import 'scss/dark-mode.scss';
 
 /* Dark Palette */
+@import 'scss/dark-mode.scss';
 
 
 .btn-dark-toggle {
@@ -14,8 +14,6 @@
   top: 30px;
   right: 20px;
 }
-
-$dkgray: #707070;
 
 /* Remove default button styles */
 button {
@@ -39,6 +37,9 @@ body {
     padding-left: 5%;
     padding-right: 5%; 
   }
+}
+.section-padding {
+  padding: 3rem;
 }
 
 /*
@@ -191,7 +192,6 @@ body {
     top: 32%;
     transform: rotate(-30deg) skew(25deg) translateX(350px);
     transform: rotate(-30deg) skew(30deg) translateX(350px); 
-;
   }
 }
 
@@ -201,15 +201,73 @@ body {
   position: relative;
 }
 h1 {
-  /* Clamp: min size, preferred size, max size) */
+  &:first-of-type{
+    padding-top: 8vh;
+  } 
+}
+.h1-current {
+  opacity: 1;
+  font-weight: 600;
+  text-shadow: .5vw .5vw .1rem rgba(88, 88, 88, 0.5);
+  z-index: 1;
+  @media (min-width: 1000px) {
+    text-shadow: .35rem .35rem .1rem rgba(88, 88, 88, 0.5);
+  }
+}
+.h1-rotate { 
+  opacity: .1;
+  z-index: -1;
+  position: relative;
+}
+
+
+/* Typography */
+
+/* Clamp: min size, preferred size, max size) */
+h1 {
   font-size: clamp(2.5rem, 3rem + 3vw, 12rem );
   line-height: .8;
-  &:first-of-type{padding-top: 8rem;} 
+  letter-spacing: -.075rem;
 }
-.h1-rotate { opacity: .1;}
+h2 {
+  font-size: clamp(2rem, 1rem + 3vw, 8rem );
+  line-height: .8;
+  letter-spacing: -.05rem;
+}
+h3 {
+  font-size: clamp(1.5rem, 1rem + 2.5vw, 6rem );
+  line-height: .8;
+  letter-spacing: -.04rem;
+}
+h4 {
+  font-size: clamp(1.45rem, 1rem + 2vw, 5rem );
+  line-height: .8;
+  letter-spacing: -.03rem;;
+}
+h5 {
+  font-size: clamp(1.35rem, 1rem + 1.5vw, 4rem );
+  line-height: .8;
+  letter-spacing: -.02rem;
+}
+h6 {
+  font-size: clamp(1.25rem, 1rem + 1vw, 3rem );
+  line-height: .8;
+  letter-spacing: -.01rem;
+}
+p, li {
+  font-size: clamp(.8rem, .7rem + 1vw, 1.15rem );
+  line-height: 1.2;
+  letter-spacing: -.025rem;
+  font-weight: 300;
+}
 
-
-
+nav {
+  padding: 1rem 0;
+  margin: 0 1rem; 
+  @media (min-width: 600px) {  
+    margin: 1rem 5%; 
+  }
+}
 
 /* Toggle Swtich based on: https://github.com/NadeeshaEranjan */
 .toggle-container {
@@ -302,16 +360,29 @@ label {
     left: 20px;
 }
 
+/* Switch to Col 2 */
 body:has( input[type="checkbox"]:checked) #toggle-column-2 {
-    opacity: 1; /* not working */
-    transition: all 3s ease; /* not working */
-    display: block;
-  }
-  body:has( input[type="checkbox"]:checked) #toggle-column-1 {
-    opacity: 0; /* not working */
-    transition: all 3s ease; /* not working */
-    display: none;
-  }
+    opacity: 1;
+    transition: all .3s ease;
+    height: auto;
+}
+body:has( input[type="checkbox"]:checked) #toggle-column-1 {
+    opacity: 0;
+    transition: all .3s ease;
+    height: 0;
+}
+
+/* Switch to back Col 1 */
+body:not(:has(input[type="checkbox"]:checked)) #toggle-column-2 {
+    opacity: 0;
+    transition: all .3s ease;
+    height: 0;
+}
+body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
+  opacity: 1;
+  transition: all .3s ease;
+  height: auto;
+}
 
 /*
 * Toggle Columns
@@ -319,20 +390,96 @@ body:has( input[type="checkbox"]:checked) #toggle-column-2 {
 #toggle-column-1 {
   border: 1px solid sandybrown;
   opacity: 1;
-  
 }
 #toggle-column-2 {
-  display: none;
+  // display: none;
   border: 1px solid plum;
   opacity: 0;
+  height: 0;
 }
 
+@mixin svg-icon-heading {
+  font-family: 'fontawesome';
+  font-size: 1.5rem;
+  font-weight: normal;
+  border: 2px solid black;
+  // color: ???; /* get from light/dark css */
+  margin-right: 1rem;
+  margin-left: -1.75rem;
+  width: 3rem;
+  height: 3rem;
+  display: inline-block;
+  padding: .15rem;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h3:has(+ .webdev-list) {
+  &::before {
+    @include svg-icon-heading;
+    content: '\f121';
+  }
+}
+h3:has(+ .branding-list) {
+  &::before {
+    @include svg-icon-heading;
+    content: '\f53f';
+  }
+}
+h3:has(+ .ecommerce-list) {
+  &::before {
+    @include svg-icon-heading;
+    content: '\f07a';
+  }
+}
+h3:has(+ .email-list) {
+  &::before {
+    @include svg-icon-heading;
+    content: '\f0e0';
+  }
+}
+h3:has(+ .social-list) {
+  &::before {
+    @include svg-icon-heading;
+    content: '\23';
+  }
+}
 
 /*
-* Portfolio
+* Portfolio Section
 */
 #portfolio-intro {
   position: relative;
   // z-index: 1;
-  max-width: 500px;
+  max-width: 700px;
+}
+
+/*
+* Work Grid
+*/
+
+/*
+* Web Awards Section
+*/
+#webawards {
+  /* move color to dark/light styles */
+  background: linear-gradient(to bottom, rgb(240, 240, 240), rgb(160, 160, 160));
+}
+
+/*
+* Website Cost Section
+*/
+#website-cost {
+  /* move color to dark/light styles */
+  background: pink;
+}
+
+/*
+* Contact Section
+*/
+#contact {
+  /* move color to dark/light styles */
+  background: linear-gradient(to bottom, rgb(240, 240, 240), rgb(160, 160, 160));
 }

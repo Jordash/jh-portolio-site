@@ -2,17 +2,31 @@
 * Define Colors
 */
 /* Light Palette */
+/* Light Variables */
 body {
   background-color: #fff;
   color: black;
 }
-
-body.dark-mode {
-  background-color: black;
-  color: white;
+body nav {
+  border-bottom: 1px solid #E0E0E0;
+}
+body .webdev-group, body .branding-group, body .ecommerce-group, body .email-group {
+  border-left: 3px solid pink;
 }
 
 /* Dark Palette */
+/* Dark Variables */
+body.dark-mode {
+  background-color: #000;
+  color: white;
+}
+body.dark-mode nav {
+  border-bottom: 1px solid #8b8989;
+}
+body.dark-mode .webdev-group, body.dark-mode .branding-group, body.dark-mode .ecommerce-group, body.dark-mode .email-group {
+  border-left: 3px solid blue;
+}
+
 .btn-dark-toggle {
   position: absolute;
   top: 30px;
@@ -43,6 +57,10 @@ body {
     padding-right: 5%;
   }
 }
+.section-padding {
+  padding: 3rem;
+}
+
 /*
 * Home Screens
 */
@@ -194,17 +212,81 @@ body {
   position: relative;
 }
 
-h1 {
-  /* Clamp: min size, preferred size, max size) */
-  font-size: clamp(2.5rem, 3rem + 3vw, 12rem);
-  line-height: 0.8;
-}
 h1:first-of-type {
-  padding-top: 8rem;
+  padding-top: 8vh;
+}
+
+.h1-current {
+  opacity: 1;
+  font-weight: 600;
+  text-shadow: 0.5vw 0.5vw 0.1rem rgba(88, 88, 88, 0.5);
+  z-index: 1;
+}
+@media (min-width: 1000px) {
+  .h1-current {
+    text-shadow: 0.35rem 0.35rem 0.1rem rgba(88, 88, 88, 0.5);
+  }
 }
 
 .h1-rotate {
   opacity: 0.1;
+  z-index: -1;
+  position: relative;
+}
+
+/* Typography */
+/* Clamp: min size, preferred size, max size) */
+h1 {
+  font-size: clamp(2.5rem, 3rem + 3vw, 12rem);
+  line-height: 0.8;
+  letter-spacing: -0.075rem;
+}
+
+h2 {
+  font-size: clamp(2rem, 1rem + 3vw, 8rem);
+  line-height: 0.8;
+  letter-spacing: -0.05rem;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 1rem + 2.5vw, 6rem);
+  line-height: 0.8;
+  letter-spacing: -0.04rem;
+}
+
+h4 {
+  font-size: clamp(1.45rem, 1rem + 2vw, 5rem);
+  line-height: 0.8;
+  letter-spacing: -0.03rem;
+}
+
+h5 {
+  font-size: clamp(1.35rem, 1rem + 1.5vw, 4rem);
+  line-height: 0.8;
+  letter-spacing: -0.02rem;
+}
+
+h6 {
+  font-size: clamp(1.25rem, 1rem + 1vw, 3rem);
+  line-height: 0.8;
+  letter-spacing: -0.01rem;
+}
+
+p, li {
+  font-size: clamp(0.8rem, 0.7rem + 1vw, 1.15rem);
+  line-height: 1.2;
+  letter-spacing: -0.025rem;
+  font-weight: 300;
+}
+
+nav {
+  padding: 1rem 0;
+  margin: 0 1rem;
+}
+@media (min-width: 600px) {
+  nav {
+    margin: 1rem 5%;
+  }
 }
 
 /* Toggle Swtich based on: https://github.com/NadeeshaEranjan */
@@ -299,16 +381,30 @@ label {
   left: 20px;
 }
 
+/* Switch to Col 2 */
 body:has(input[type=checkbox]:checked) #toggle-column-2 {
-  opacity: 1; /* not working */
-  transition: all 3s ease; /* not working */
-  display: block;
+  opacity: 1;
+  transition: all 0.3s ease;
+  height: auto;
 }
 
 body:has(input[type=checkbox]:checked) #toggle-column-1 {
-  opacity: 0; /* not working */
-  transition: all 3s ease; /* not working */
-  display: none;
+  opacity: 0;
+  transition: all 0.3s ease;
+  height: 0;
+}
+
+/* Switch to back Col 1 */
+body:not(:has(input[type=checkbox]:checked)) #toggle-column-2 {
+  opacity: 0;
+  transition: all 0.3s ease;
+  height: 0;
+}
+
+body:not(:has(input[type=checkbox]:checked)) #toggle-column-1 {
+  opacity: 1;
+  transition: all 0.3s ease;
+  height: auto;
 }
 
 /*
@@ -320,15 +416,132 @@ body:has(input[type=checkbox]:checked) #toggle-column-1 {
 }
 
 #toggle-column-2 {
-  display: none;
   border: 1px solid plum;
   opacity: 0;
+  height: 0;
+}
+
+h3:has(+ .webdev-list)::before {
+  font-family: "fontawesome";
+  font-size: 1.5rem;
+  font-weight: normal;
+  border: 2px solid black;
+  margin-right: 1rem;
+  margin-left: -1.75rem;
+  width: 3rem;
+  height: 3rem;
+  display: inline-block;
+  padding: 0.15rem;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  content: "\f121";
+}
+
+h3:has(+ .branding-list)::before {
+  font-family: "fontawesome";
+  font-size: 1.5rem;
+  font-weight: normal;
+  border: 2px solid black;
+  margin-right: 1rem;
+  margin-left: -1.75rem;
+  width: 3rem;
+  height: 3rem;
+  display: inline-block;
+  padding: 0.15rem;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  content: "\f53f";
+}
+
+h3:has(+ .ecommerce-list)::before {
+  font-family: "fontawesome";
+  font-size: 1.5rem;
+  font-weight: normal;
+  border: 2px solid black;
+  margin-right: 1rem;
+  margin-left: -1.75rem;
+  width: 3rem;
+  height: 3rem;
+  display: inline-block;
+  padding: 0.15rem;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  content: "\f07a";
+}
+
+h3:has(+ .email-list)::before {
+  font-family: "fontawesome";
+  font-size: 1.5rem;
+  font-weight: normal;
+  border: 2px solid black;
+  margin-right: 1rem;
+  margin-left: -1.75rem;
+  width: 3rem;
+  height: 3rem;
+  display: inline-block;
+  padding: 0.15rem;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  content: "\f0e0";
+}
+
+h3:has(+ .social-list)::before {
+  font-family: "fontawesome";
+  font-size: 1.5rem;
+  font-weight: normal;
+  border: 2px solid black;
+  margin-right: 1rem;
+  margin-left: -1.75rem;
+  width: 3rem;
+  height: 3rem;
+  display: inline-block;
+  padding: 0.15rem;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  content: "#";
 }
 
 /*
-* Portfolio
+* Portfolio Section
 */
 #portfolio-intro {
   position: relative;
-  max-width: 500px;
+  max-width: 700px;
+}
+
+/*
+* Work Grid
+*/
+/*
+* Web Awards Section
+*/
+#webawards {
+  /* move color to dark/light styles */
+  background: linear-gradient(to bottom, rgb(240, 240, 240), rgb(160, 160, 160));
+}
+
+/*
+* Website Cost Section
+*/
+#website-cost {
+  /* move color to dark/light styles */
+  background: pink;
+}
+
+/*
+* Contact Section
+*/
+#contact {
+  /* move color to dark/light styles */
+  background: linear-gradient(to bottom, rgb(240, 240, 240), rgb(160, 160, 160));
 }/*# sourceMappingURL=styles.css.map */
