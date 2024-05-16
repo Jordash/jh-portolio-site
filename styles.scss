@@ -8,6 +8,29 @@
 /* Dark Palette */
 @import 'scss/dark-mode.scss';
 
+/* Mixins */
+@mixin svg-icon-heading {
+  font-family: 'fontawesome';
+  font-size: 1.35rem;
+  font-weight: normal;
+  border: 2px solid $group-border;
+  margin-right: 1rem;
+  margin-left: -3.7rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: inline-block;
+  padding: .15rem;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: top;
+}
+@mixin max-width-container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .btn-dark-toggle {
   position: absolute;
@@ -27,17 +50,28 @@ body {
   font-size: 16px;
   line-height: 1.2;
 }
-
+.entry-content > .alignfull { 
+  width: calc(100% + 2rem);
+  margin-left: -1rem;
+  margin-right: -1rem;
+  margin-block-start: 0;
+}
 .entry-content {
   padding-left: 1rem;
   padding-right: 1rem;
 }
 @media (min-width: 600px) {
+  .entry-content > .alignfull {
+    width: calc(100% + 12%);
+    margin-left: -6%;
+    margin-right: -6%;
+  }
   .entry-content {
     padding-left: 5%;
-    padding-right: 5%; 
+    padding-right: 5%;
   }
 }
+
 .section-padding {
   padding: 3rem;
 }
@@ -49,7 +83,7 @@ body {
   z-index: -1;
   position: absolute;
   right: 0;
-  top: 32%;
+  top: 28%;
   grid-template-rows: repeat(20, 1fr);
 	grid-template-columns: repeat(3, 1fr);
 	gap: 10px;
@@ -196,7 +230,9 @@ body {
 }
 
 
-/* Homepage Rotating Headlines */
+/* 
+* Homepage Rotating Headlines 
+*/
 #intro {
   position: relative;
 }
@@ -221,7 +257,9 @@ h1 {
 }
 
 
-/* Typography */
+/* 
+* Typography 
+*/
 
 /* Clamp: min size, preferred size, max size) */
 h1 {
@@ -231,27 +269,27 @@ h1 {
 }
 h2 {
   font-size: clamp(2rem, 1rem + 3vw, 8rem );
-  line-height: .8;
+  line-height: .9;
   letter-spacing: -.05rem;
 }
 h3 {
   font-size: clamp(1.5rem, 1rem + 2.5vw, 6rem );
-  line-height: .8;
+  line-height: .9;
   letter-spacing: -.04rem;
 }
 h4 {
   font-size: clamp(1.45rem, 1rem + 2vw, 5rem );
-  line-height: .8;
+  line-height: .9;
   letter-spacing: -.03rem;;
 }
 h5 {
   font-size: clamp(1.35rem, 1rem + 1.5vw, 4rem );
-  line-height: .8;
+  line-height: .9;
   letter-spacing: -.02rem;
 }
 h6 {
   font-size: clamp(1.25rem, 1rem + 1vw, 3rem );
-  line-height: .8;
+  line-height: .9;
   letter-spacing: -.01rem;
 }
 p, li {
@@ -269,7 +307,29 @@ nav {
   }
 }
 
-/* Toggle Swtich based on: https://github.com/NadeeshaEranjan */
+/*
+* Work Filter Buttons
+*/
+#filter-buttons {
+  a.wp-element-button {
+    background-color: unset;
+    color: gray; /* move to light/dark css */
+  }
+  a:hover {
+    background-color: red; /* move to light/dark css */
+    transition: all ease .5s;
+  }
+  a.clicked { /* add class with JS */
+    background-color: $dkgray; /* move to light/dark css */
+  }
+}
+
+
+
+
+/* 
+* Toggle Swtich based on: https://github.com/NadeeshaEranjan 
+*/
 .toggle-container {
     display: flex;
     padding: 2rem;
@@ -296,7 +356,7 @@ label {
 
 .btn-color-mode-switch > label.btn-color-mode-switch-inner{
     margin: 0px;
-    width: 200px; /* was 140px */
+    width: 200px;
     height: 2.5rem;
     background: #E0E0E0;
     border-radius: 26px;
@@ -372,7 +432,7 @@ body:has( input[type="checkbox"]:checked) #toggle-column-1 {
     height: 0;
 }
 
-/* Switch to back Col 1 */
+/* Switch back to Col 1 */
 body:not(:has(input[type="checkbox"]:checked)) #toggle-column-2 {
     opacity: 0;
     transition: all .3s ease;
@@ -390,30 +450,19 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
 #toggle-column-1 {
   border: 1px solid sandybrown;
   opacity: 1;
+  .wp-block-group {
+    // border: 1px solid red;
+    padding-top: 3rem;
+    margin-left: 3rem;
+    margin-block-start: 0;
+  }
 }
+
 #toggle-column-2 {
   // display: none;
   border: 1px solid plum;
   opacity: 0;
   height: 0;
-}
-
-@mixin svg-icon-heading {
-  font-family: 'fontawesome';
-  font-size: 1.5rem;
-  font-weight: normal;
-  border: 2px solid black;
-  // color: ???; /* get from light/dark css */
-  margin-right: 1rem;
-  margin-left: -1.75rem;
-  width: 3rem;
-  height: 3rem;
-  display: inline-block;
-  padding: .15rem;
-  border-radius: 50%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
 }
 
 h3:has(+ .webdev-list) {
@@ -459,6 +508,82 @@ h3:has(+ .social-list) {
 /*
 * Work Grid
 */
+#work-grid {
+  margin-top: 1.5rem;
+  gap: 0;
+    &:has(.work-grid-image:hover) .work-grid-image:not(:hover) {
+      opacity: .3;
+      transition: all .3s ease;
+    }
+  .work-grid-icebowl16 {
+    grid-column: span 2;
+    grid-row: span 1;
+    img{
+      object-fit: cover;
+      aspect-ratio: 16/8;
+    } 
+  }
+  .work-grid-karma {
+    grid-column: span 1;
+    grid-column: span 1;
+  }
+  .work-grid-medix {
+    grid-column: span 1;
+    grid-column: span 1;
+  }
+  .work-grid-gv {
+    grid-column: span 1;
+    grid-column: span 1;
+  }
+  .work-grid-chcl {
+    grid-column: span 1;
+    grid-column: span 1;
+  }
+  .work-grid-donut {
+    grid-column: span 1;
+    grid-column: span 1;
+  }
+  .work-grid-solihten {
+    grid-column: span 1;
+    grid-column: span 1;
+  }
+  .work-grid-splitstar {
+    grid-column: span 2;
+    grid-row: span 1;
+    img{
+      object-fit: cover;
+      aspect-ratio: 16/8;
+    } 
+  }
+  .work-grid-mab {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  .work-grid-bc {
+    grid-column: span 1;
+    grid-column: span 1;
+  }
+  .work-grid-cls {
+    grid-column: span 1;
+    grid-column: span 1;
+  }
+  .work-grid-icebowl17 {
+    grid-column: span 1;
+    grid-column: span 1;
+  }
+  .work-grid-astrea {
+    grid-column: span 1;
+    grid-column: span 1;
+  }
+  .work-grid-hfh {
+    grid-column: span 1;
+    grid-column: span 1;
+  }
+  .work-grid-easter {
+    grid-column: span 1;
+    grid-column: span 1;
+  }
+}
 
 /*
 * Web Awards Section
@@ -466,6 +591,12 @@ h3:has(+ .social-list) {
 #webawards {
   /* move color to dark/light styles */
   background: linear-gradient(to bottom, rgb(240, 240, 240), rgb(160, 160, 160));
+  .wp-block-column {
+    @include max-width-container;
+  }
+  img {
+    max-width: 300px;
+  }
 }
 
 /*
@@ -474,6 +605,9 @@ h3:has(+ .social-list) {
 #website-cost {
   /* move color to dark/light styles */
   background: pink;
+  .wp-block-columns, h2, .wp-block-buttons {
+    @include max-width-container;
+  }
 }
 
 /*
@@ -482,4 +616,7 @@ h3:has(+ .social-list) {
 #contact {
   /* move color to dark/light styles */
   background: linear-gradient(to bottom, rgb(240, 240, 240), rgb(160, 160, 160));
+  .wp-block-columns {
+    @include max-width-container;
+  }
 }

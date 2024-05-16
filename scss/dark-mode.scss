@@ -3,14 +3,23 @@ $dkgray: #707070;
 $nav-border: #8b8989;
 $background: #000;
 $group-border: blue;
+$icon-color: blue;
 
 body.dark-mode {
-    background-color: $background;
-    color: white;
-    nav {
-        border-bottom: 1px solid $nav-border;
+  #toggle-column-1 {
+    h3 {
+      &::before {
+        color: $icon-color;
+        border-color: $group-border;
+      }
     }
-    .webdev-group, .branding-group, .ecommerce-group, .email-group {
-        border-left: 3px solid $group-border;
-    }
+  }
+  background-color: $background;
+  color: white;
+  nav {
+    border-bottom: 1px solid $nav-border;
+  }
+  .webdev-group, .branding-group, .ecommerce-group, .email-group {
+    border-left: 3px solid $group-border;
+}
 }
