@@ -28,36 +28,36 @@ function jh_styles() {
 	// );
 
   //Load Local GSAP
-	// wp_enqueue_script( 
-	// 	'gsap', 
-	// 	get_template_directory_uri() . '/js/gsap.min.js', 
-	// 	array(), 
-	// 	'3.12.2', 
-	// 	array( 
-	// 		'strategy'  => 'defer',
-	// 	)
-	// );
+	wp_enqueue_script( 
+   	  'gsap', 
+	  get_template_directory_uri() . '/assets/js/gsap.min.js', 
+	  array(), 
+	  '3.12.5', 
+	  array( 
+	    'strategy'  => 'defer',
+	  )
+	);
 
   // Load Local ScrollTrigger
-	// wp_enqueue_script( 
-	// 	'gsapScrollTrigger', 
-	// 	get_template_directory_uri() . '/js/ScrollTrigger.min.js', 
-	// 	array('gsap'), 
-	// 	'3.12.2', 
-	// 	array( 
-	// 		'strategy'  => 'defer',
-	// 	)
-	// );
+	wp_enqueue_script( 
+	  'gsapScrollTrigger', 
+	  get_template_directory_uri() . '/assets/js/ScrollTrigger.min.js', 
+	  array('gsap'), 
+	  '3.12.5', 
+	  array( 
+	    'strategy'  => 'defer',
+	  )
+	);
 
   // Load Local Site JS
 	wp_enqueue_script( 
-		'jh-site', 
-		get_template_directory_uri() . '/assets/js/site.js', 
-		array(), 
-		'1.0', 
-		array( 
-			'strategy'  => 'defer',
-		)
+	  'jh-site', 
+	  get_template_directory_uri() . '/assets/js/site.js', 
+	  array(), 
+	  '1.0', 
+	  array( 
+	    'strategy'  => 'defer',
+	  )
 	);
 }
 add_action( 'wp_enqueue_scripts', 'jh_styles' );

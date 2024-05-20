@@ -47,10 +47,6 @@ body nav {
 }
 body #toggle-column-1 h3::before {
   color: #B1E019;
-  border-color: #707070;
-}
-body .webdev-group, body .branding-group, body .ecommerce-group, body .email-group {
-  border-left: 3px solid #707070;
 }
 body #webawards {
   background: linear-gradient(150deg, #F0F0F0 0%, #A0A0A0 100%);
@@ -96,13 +92,9 @@ body.dark-mode {
 }
 body.dark-mode #toggle-column-1 h3::before {
   color: blue;
-  border-color: blue;
 }
 body.dark-mode nav {
   border-bottom: 1px solid #8b8989;
-}
-body.dark-mode .webdev-group, body.dark-mode .branding-group, body.dark-mode .ecommerce-group, body.dark-mode .email-group {
-  border-left: 3px solid blue;
 }
 
 /* Mixins */
@@ -537,7 +529,7 @@ h3:has(+ .webdev-list)::before {
   font-family: "fontawesome";
   font-size: 1.35rem;
   font-weight: normal;
-  border: 2px solid blue;
+  border: 2px solid #707070;
   margin-right: 1rem;
   margin-left: -3.7rem;
   width: 2.25rem;
@@ -556,7 +548,7 @@ h3:has(+ .branding-list)::before {
   font-family: "fontawesome";
   font-size: 1.35rem;
   font-weight: normal;
-  border: 2px solid blue;
+  border: 2px solid #707070;
   margin-right: 1rem;
   margin-left: -3.7rem;
   width: 2.25rem;
@@ -575,7 +567,7 @@ h3:has(+ .ecommerce-list)::before {
   font-family: "fontawesome";
   font-size: 1.35rem;
   font-weight: normal;
-  border: 2px solid blue;
+  border: 2px solid #707070;
   margin-right: 1rem;
   margin-left: -3.7rem;
   width: 2.25rem;
@@ -594,7 +586,7 @@ h3:has(+ .email-list)::before {
   font-family: "fontawesome";
   font-size: 1.35rem;
   font-weight: normal;
-  border: 2px solid blue;
+  border: 2px solid #707070;
   margin-right: 1rem;
   margin-left: -3.7rem;
   width: 2.25rem;
@@ -613,7 +605,7 @@ h3:has(+ .social-list)::before {
   font-family: "fontawesome";
   font-size: 1.35rem;
   font-weight: normal;
-  border: 2px solid blue;
+  border: 2px solid #707070;
   margin-right: 1rem;
   margin-left: -3.7rem;
   width: 2.25rem;

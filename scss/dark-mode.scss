@@ -10,7 +10,6 @@ body.dark-mode {
     h3 {
       &::before {
         color: $icon-color;
-        border-color: $group-border;
       }
     }
   }
@@ -19,7 +18,4 @@ body.dark-mode {
   nav {
     border-bottom: 1px solid $nav-border;
   }
-  .webdev-group, .branding-group, .ecommerce-group, .email-group {
-    border-left: 3px solid $group-border;
-}
 }

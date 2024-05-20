@@ -3,7 +3,6 @@ $dkgray: #707070;
 $ltgray: #E0E0E0;
 $nav-border: $ltgray;
 $background: #fff;
-$group-border: $dkgray;
 $icon-color: #B1E019;
 $link-base: $dkgray;                                                        
 $link-hover: #9FC417;                                                     
@@ -72,12 +71,8 @@ body {
     h3 {
       &::before {
         color: $icon-color;
-        border-color: $group-border;
       }
     }
-  }
-  .webdev-group, .branding-group, .ecommerce-group, .email-group {
-    border-left: 3px solid $group-border;
   }
   #webawards {
     background: $webaward-bg-gradient;
