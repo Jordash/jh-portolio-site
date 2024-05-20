@@ -3,19 +3,89 @@
 */
 /* Light Palette */
 /* Light Variables */
+/* */
+/* */
+/* */
+/* */
 body {
   background-color: #fff;
   color: black;
 }
-body #toggle-column-1 h3::before {
-  color: pink;
-  border-color: pink;
+body a {
+  color: #707070;
+}
+body a:hover {
+  color: #9FC417;
+}
+body h1.h1-current {
+  color: #E6DF22;
+  text-shadow: 0.5vw 0.5vw 0.1rem rgb(112, 112, 112);
+}
+@media (min-width: 1000px) {
+  body h1.h1-current {
+    text-shadow: 0.35rem 0.35rem 0.1rem rgb(112, 112, 112);
+  }
+}
+body h1.h1-rotate {
+  color: #707070;
+}
+body h2 em {
+  color: #B1E019;
+  font-style: normal;
+}
+body .wp-block-button__link {
+  background: linear-gradient(75deg, #E5DF23 0%, #ABE01A 100%);
+  box-shadow: 5px 5px 2px 0px rgb(112, 112, 112);
+  color: #707070;
+  border-radius: 0.2rem;
+}
+body .wp-block-button__link:hover {
+  color: #fff;
 }
 body nav {
   border-bottom: 1px solid #E0E0E0;
 }
+body #toggle-column-1 h3::before {
+  color: #B1E019;
+  border-color: #707070;
+}
 body .webdev-group, body .branding-group, body .ecommerce-group, body .email-group {
-  border-left: 3px solid pink;
+  border-left: 3px solid #707070;
+}
+body #webawards {
+  background: linear-gradient(150deg, #F0F0F0 0%, #A0A0A0 100%);
+}
+body #webawards h2 {
+  color: #707070;
+}
+body #webawards h2 em {
+  color: #58C9E9;
+}
+body #website-cost {
+  background: linear-gradient(75deg, #7EC4F3 0%, #206BC3 100%);
+  color: #000;
+}
+body #website-cost h2 {
+  color: #fff;
+}
+body #website-cost h2 em {
+  color: #F6DF02;
+}
+body #contact {
+  background: linear-gradient(75deg, #FFF8C4 0%, #ACE019 100%);
+  color: #000;
+}
+body #contact h2 em {
+  color: #1E8AC3;
+}
+body #contact .wp-social-link {
+  background: unset;
+}
+body #contact .wp-social-link a {
+  color: #1E8AC3;
+}
+body #contact .wp-social-link a:hover {
+  color: #C31FA3;
 }
 
 /* Dark Palette */
@@ -53,6 +123,7 @@ body {
   padding: 0;
   font-size: 16px;
   line-height: 1.2;
+  color: #707070;
 }
 
 .entry-content > .alignfull {
@@ -242,13 +313,7 @@ h1:first-of-type {
 .h1-current {
   opacity: 1;
   font-weight: 600;
-  text-shadow: 0.5vw 0.5vw 0.1rem rgba(88, 88, 88, 0.5);
   z-index: 1;
-}
-@media (min-width: 1000px) {
-  .h1-current {
-    text-shadow: 0.35rem 0.35rem 0.1rem rgba(88, 88, 88, 0.5);
-  }
 }
 
 .h1-rotate {
@@ -568,7 +633,7 @@ h3:has(+ .social-list)::before {
 */
 #portfolio-intro {
   position: relative;
-  max-width: 700px;
+  max-width: 720px;
 }
 
 /*
@@ -656,10 +721,6 @@ h3:has(+ .social-list)::before {
 /*
 * Web Awards Section
 */
-#webawards {
-  /* move color to dark/light styles */
-  background: linear-gradient(to bottom, rgb(240, 240, 240), rgb(160, 160, 160));
-}
 #webawards .wp-block-column {
   max-width: 1200px;
   margin-left: auto;
@@ -672,10 +733,6 @@ h3:has(+ .social-list)::before {
 /*
 * Website Cost Section
 */
-#website-cost {
-  /* move color to dark/light styles */
-  background: pink;
-}
 #website-cost .wp-block-columns, #website-cost h2, #website-cost .wp-block-buttons {
   max-width: 1200px;
   margin-left: auto;
@@ -693,4 +750,7 @@ h3:has(+ .social-list)::before {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+}
+#contact .wp-social-link a span {
+  font-size: 1rem;
 }/*# sourceMappingURL=styles.css.map */

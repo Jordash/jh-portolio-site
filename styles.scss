@@ -49,6 +49,7 @@ body {
   padding: 0;
   font-size: 16px;
   line-height: 1.2;
+  color: $dkgray;
 }
 .entry-content > .alignfull { 
   width: calc(100% + 2rem);
@@ -244,11 +245,7 @@ h1 {
 .h1-current {
   opacity: 1;
   font-weight: 600;
-  text-shadow: .5vw .5vw .1rem rgba(88, 88, 88, 0.5);
   z-index: 1;
-  @media (min-width: 1000px) {
-    text-shadow: .35rem .35rem .1rem rgba(88, 88, 88, 0.5);
-  }
 }
 .h1-rotate { 
   opacity: .1;
@@ -502,7 +499,7 @@ h3:has(+ .social-list) {
 #portfolio-intro {
   position: relative;
   // z-index: 1;
-  max-width: 700px;
+  max-width: 720px; 
 }
 
 /*
@@ -589,8 +586,6 @@ h3:has(+ .social-list) {
 * Web Awards Section
 */
 #webawards {
-  /* move color to dark/light styles */
-  background: linear-gradient(to bottom, rgb(240, 240, 240), rgb(160, 160, 160));
   .wp-block-column {
     @include max-width-container;
   }
@@ -603,8 +598,6 @@ h3:has(+ .social-list) {
 * Website Cost Section
 */
 #website-cost {
-  /* move color to dark/light styles */
-  background: pink;
   .wp-block-columns, h2, .wp-block-buttons {
     @include max-width-container;
   }
@@ -618,5 +611,12 @@ h3:has(+ .social-list) {
   background: linear-gradient(to bottom, rgb(240, 240, 240), rgb(160, 160, 160));
   .wp-block-columns {
     @include max-width-container;
+  }
+  .wp-social-link{
+    a {
+      span {
+        font-size: 1rem; //TODO: clamp this 
+      }
+    }
   }
 }

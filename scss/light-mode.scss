@@ -1,11 +1,73 @@
 /* Light Variables */
 $dkgray: #707070;
-$nav-border: #E0E0E0;
+$ltgray: #E0E0E0;
+$nav-border: $ltgray;
 $background: #fff;
-$group-border: pink;
-$icon-color: pink;
+$group-border: $dkgray;
+$icon-color: #B1E019;
+$link-base: $dkgray;                                                        
+$link-hover: #9FC417;                                                     
+$type-base: $dkgray;
+$type-highlight: #B1E019;                                                  
+$h1-rotate-base: $dkgray;                                                    
+$h1-rotate-highlight: #E6DF22;                                             
+$h1-rotate-highlight-shadow: rgba(112, 112, 112, 1);                        
+$button-gradient: linear-gradient(75deg, #E5DF23 0%, #ABE01A 100%);       
+$button-shadow: rgba(112, 112, 112, 1); 
+$button-hover-text: #fff;        
+$webaward-bg-gradient: linear-gradient(150deg, #F0F0F0 0%, #A0A0A0 100%);
+$webaward-base-type: $dkgray;                                               
+$webaward-type-highlight: #58C9E9; 
+$cost-heading-base: #fff;  
+$cost-heading-highlight: #F6DF02; 
+$cost-type: #000; 
+$cost-bg-gradient: linear-gradient(75deg, #7EC4F3 0%, #206BC3 100%); 
+$contact-type-base: #000; 
+$contact-type-highlight: #1E8AC3; 
+$contact-link-base: #1E8AC3; 
+$contact-link-hover: #C31FA3; 
+/* */ $contact-button-gradient: linear-gradient(75deg, #47CCEB 0%, #1F8AC3 100%); 
+/* */ $contact-button-type: #E4E4E4; 
+$contact-bg-gradient: linear-gradient(75deg, #FFF8C4 0%, #ACE019 100%); 
+/* */ $contact-field-label: $dkgray; 
+/* */ $contact-field-border: #555555; 
 
 body {
+  background-color: $background;
+  color: black;
+  a { 
+    color: $link-base;
+    &:hover{
+      color: $link-hover;
+    } 
+  }
+  h1.h1-current {
+    color: $h1-rotate-highlight;
+    text-shadow: .5vw .5vw .1rem $h1-rotate-highlight-shadow;
+    @media (min-width: 1000px) {
+      text-shadow: .35rem .35rem .1rem $h1-rotate-highlight-shadow;
+    }
+  }
+  h1.h1-rotate {
+    color: $h1-rotate-base;
+  }
+  h2 { 
+    em {
+      color: $type-highlight;
+      font-style: normal;
+    } 
+  }
+  .wp-block-button__link {
+    background: $button-gradient;
+    box-shadow: 5px 5px 2px 0px $button-shadow;
+    color: $type-base;
+    border-radius: .2rem;
+  &:hover {
+    color: $button-hover-text;
+  }}
+  nav {
+    border-bottom: 1px solid $nav-border;
+  }
   #toggle-column-1 {
     h3 {
       &::before {
@@ -14,12 +76,44 @@ body {
       }
     }
   }
-  background-color: $background;
-  color: black;
-  nav {
-    border-bottom: 1px solid $nav-border;
-  }
   .webdev-group, .branding-group, .ecommerce-group, .email-group {
     border-left: 3px solid $group-border;
+  }
+  #webawards {
+    background: $webaward-bg-gradient;
+    h2 {
+      color: $webaward-base-type;
+      em {
+        color: $webaward-type-highlight;
+      }
+    }
+  }
+  #website-cost {
+    background: $cost-bg-gradient;
+    color: $cost-type;
+    h2 {
+      color: $cost-heading-base;
+      em {
+        color: $cost-heading-highlight;
+      }
+    }
+  }
+  #contact {
+    background: $contact-bg-gradient;
+    color: $contact-type-base;
+    h2 {
+      em {
+        color: $contact-type-highlight;
+      }
+    }
+    .wp-social-link{ 
+      background: unset;
+      a {
+        color: $contact-link-base;
+        &:hover {
+          color: $contact-link-hover;
+        }
+      }
+    } 
   }
 }
