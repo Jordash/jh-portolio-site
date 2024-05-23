@@ -98,10 +98,38 @@ body.dark-mode nav {
 }
 
 /* Mixins */
-.btn-dark-toggle {
-  position: absolute;
-  top: 30px;
-  right: 20px;
+#jh-logo {
+  width: 25px;
+  height: auto;
+}
+#jh-logo path, #jh-logo rect {
+  fill: #707070; /* move to light/dark css */
+}
+
+@keyframes scale-up {
+  from {
+    scale: 0.5;
+  }
+}
+figure img {
+  animation: scale-up linear both;
+  animation-timeline: view();
+  animation-range: 25vh 75vh;
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes shadow-in {
+  to {
+    box-shadow: 0 10px 10px #000300;
+  }
+}
+nav {
+  animation: fade-in linear both, shadow-in linear both;
+  animation-timeline: scroll();
 }
 
 /* Remove default button styles */
@@ -142,9 +170,24 @@ body {
   }
 }
 .section-padding {
-  padding: 3rem;
+  padding: 1.5rem;
 }
 
+@media (min-width: 600px) {
+  .section-padding {
+    padding: 3rem;
+  }
+}
+@media (min-width: 900px) {
+  .section-padding {
+    padding: 6rem;
+  }
+}
+@media (min-width: 1200px) {
+  .section-padding {
+    padding: 9rem;
+  }
+}
 /*
 * Home Screens
 */
@@ -325,31 +368,31 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(2rem, 1rem + 3vw, 8rem);
+  font-size: clamp(2rem, 1rem + 3vw, 4rem);
   line-height: 0.9;
   letter-spacing: -0.05rem;
 }
 
 h3 {
-  font-size: clamp(1.5rem, 1rem + 2.5vw, 6rem);
+  font-size: clamp(1.5rem, 1rem + 2.5vw, 3.5rem);
   line-height: 0.9;
   letter-spacing: -0.04rem;
 }
 
 h4 {
-  font-size: clamp(1.45rem, 1rem + 2vw, 5rem);
+  font-size: clamp(1.45rem, 1rem + 2vw, 2.5rem);
   line-height: 0.9;
   letter-spacing: -0.03rem;
 }
 
 h5 {
-  font-size: clamp(1.35rem, 1rem + 1.5vw, 4rem);
+  font-size: clamp(1.35rem, 1rem + 1.5vw, 2rem);
   line-height: 0.9;
   letter-spacing: -0.02rem;
 }
 
 h6 {
-  font-size: clamp(1.25rem, 1rem + 1vw, 3rem);
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.5rem);
   line-height: 0.9;
   letter-spacing: -0.01rem;
 }
@@ -513,10 +556,10 @@ body:not(:has(input[type=checkbox]:checked)) #toggle-column-1 {
   border: 1px solid sandybrown;
   opacity: 1;
 }
-#toggle-column-1 .wp-block-group {
-  padding-top: 3rem;
-  margin-left: 3rem;
-  margin-block-start: 0;
+#toggle-column-1 .wp-block-column {
+  min-height: 500px;
+  display: flex;
+  align-items: center;
 }
 
 #toggle-column-2 {
@@ -525,13 +568,82 @@ body:not(:has(input[type=checkbox]:checked)) #toggle-column-1 {
   height: 0;
 }
 
-h3:has(+ .webdev-list)::before {
+@keyframes spin-forward {
+  0% {
+    transform: rotateY(-20deg);
+  }
+  100% {
+    transform: rotateY(-200deg);
+  }
+}
+@keyframes spin-back {
+  0% {
+    transform: rotateY(200deg);
+  }
+  100% {
+    transform: rotateY(-20deg);
+  }
+}
+#toggle-column-1 .wp-block-columns {
+  perspective: 1000px;
+}
+
+.wp-block-column:has(.flip-card-front) {
+  position: relative;
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  transform-origin: center right;
+}
+
+.flip-card-front {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3vw;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 3rem;
+  animation: spin-forward linear both;
+  animation-timeline: view();
+  animation-range: 25vh 75vh;
+  background: #707070; /* move to light/dark css */
+  margin-block-start: 0; /* prevents offset from card back */
+}
+
+.flip-card-back {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3vw;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 3rem;
+  transform: rotateY(160deg);
+  animation: spin-back linear both;
+  animation-timeline: view();
+  animation-range: 25vh 75vh;
+  background: black; /* move to light/dark css */
+}
+
+.flip-card-back li {
+  margin-bottom: 1.2rem;
+}
+
+.webdev-list h3::before {
   font-family: "fontawesome";
   font-size: 1.35rem;
   font-weight: normal;
   border: 2px solid #707070;
   margin-right: 1rem;
-  margin-left: -3.7rem;
   width: 2.25rem;
   height: 2.25rem;
   display: inline-block;
@@ -544,13 +656,12 @@ h3:has(+ .webdev-list)::before {
   content: "\f121";
 }
 
-h3:has(+ .branding-list)::before {
+.branding-list h3::before {
   font-family: "fontawesome";
   font-size: 1.35rem;
   font-weight: normal;
   border: 2px solid #707070;
   margin-right: 1rem;
-  margin-left: -3.7rem;
   width: 2.25rem;
   height: 2.25rem;
   display: inline-block;
@@ -563,13 +674,12 @@ h3:has(+ .branding-list)::before {
   content: "\f53f";
 }
 
-h3:has(+ .ecommerce-list)::before {
+.ecommerce-list h3::before {
   font-family: "fontawesome";
   font-size: 1.35rem;
   font-weight: normal;
   border: 2px solid #707070;
   margin-right: 1rem;
-  margin-left: -3.7rem;
   width: 2.25rem;
   height: 2.25rem;
   display: inline-block;
@@ -582,13 +692,12 @@ h3:has(+ .ecommerce-list)::before {
   content: "\f07a";
 }
 
-h3:has(+ .email-list)::before {
+.email-list h3::before {
   font-family: "fontawesome";
   font-size: 1.35rem;
   font-weight: normal;
   border: 2px solid #707070;
   margin-right: 1rem;
-  margin-left: -3.7rem;
   width: 2.25rem;
   height: 2.25rem;
   display: inline-block;
@@ -601,13 +710,12 @@ h3:has(+ .email-list)::before {
   content: "\f0e0";
 }
 
-h3:has(+ .social-list)::before {
+.social-list h3::before {
   font-family: "fontawesome";
   font-size: 1.35rem;
   font-weight: normal;
   border: 2px solid #707070;
   margin-right: 1rem;
-  margin-left: -3.7rem;
   width: 2.25rem;
   height: 2.25rem;
   display: inline-block;
@@ -618,6 +726,13 @@ h3:has(+ .social-list)::before {
   align-items: center;
   vertical-align: top;
   content: "#";
+}
+
+.flip-card-front i {
+  font-size: 20rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*
@@ -743,6 +858,12 @@ h3:has(+ .social-list)::before {
   margin-left: auto;
   margin-right: auto;
 }
-#contact .wp-social-link a span {
+#contact .wp-block-social-links {
+  margin-block-start: 0.5rem;
+}
+#contact .wp-block-social-links .wp-social-link a svg {
+  font-size: 1.5rem;
+}
+#contact .wp-block-social-links .wp-social-link a span {
   font-size: 1rem;
 }/*# sourceMappingURL=styles.css.map */
