@@ -59,6 +59,18 @@ function jh_styles() {
 	    'strategy'  => 'defer',
 	  )
 	);
+
+  // Load Polyfill for Scroll-driven animations
+  // https://github.com/flackr/scroll-timeline
+    wp_enqueue_script(
+	  'polyfill',
+	  'https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js',
+	  array(),
+	  '1.0',
+	  array(
+	    'stragety' => 'defer',
+	  )
+	);
 }
 add_action( 'wp_enqueue_scripts', 'jh_styles' );
 

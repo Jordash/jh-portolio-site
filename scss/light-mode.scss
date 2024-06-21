@@ -73,6 +73,10 @@ body {
         color: $icon-color;
       }
     }
+    .flip-card-front,
+    .flip-card-back {
+      color: $icon-color;
+    }
   }
   #webawards {
     background: $webaward-bg-gradient;

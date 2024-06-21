@@ -48,6 +48,10 @@ body nav {
 body #toggle-column-1 h3::before {
   color: #B1E019;
 }
+body #toggle-column-1 .flip-card-front,
+body #toggle-column-1 .flip-card-back {
+  color: #B1E019;
+}
 body #webawards {
   background: linear-gradient(150deg, #F0F0F0 0%, #A0A0A0 100%);
 }
@@ -729,7 +733,7 @@ body:not(:has(input[type=checkbox]:checked)) #toggle-column-1 {
 }
 
 .flip-card-front i {
-  font-size: 20rem;
+  font-size: 15rem;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -852,6 +856,7 @@ body:not(:has(input[type=checkbox]:checked)) #toggle-column-1 {
 #contact {
   /* move color to dark/light styles */
   background: linear-gradient(to bottom, rgb(240, 240, 240), rgb(160, 160, 160));
+  /* Ninja Forms Styles */
 }
 #contact .wp-block-columns {
   max-width: 1200px;
@@ -866,4 +871,30 @@ body:not(:has(input[type=checkbox]:checked)) #toggle-column-1 {
 }
 #contact .wp-block-social-links .wp-social-link a span {
   font-size: 1rem;
+}
+#contact .nf-form-fields-required { /* Hide "All * fields required" */
+  display: none;
+}
+#contact .ninja-forms-req-symbol { /* Remove Required Ast */
+  display: none;
+}
+#contact .ninja-forms-field {
+  background: none;
+  border: none;
+  border-bottom: 1px solid black; /* move to light/dark css */
+  padding: 0.3rem;
+}
+#contact .ninja-forms-field:focus {
+  background-color: #fff; /* move to light/dark css */
+  transition: all 0.3s linear;
+}
+#contact .ninja-forms-field:has(input:focus) ~ .nf-field-label { /* WORKING YET */
+  display: block;
+  border: 6px solid purple;
+}
+#contact .nf-field-label {
+  height: 1.5rem;
+}
+#contact .nf-field-label label {
+  display: none;
 }/*# sourceMappingURL=styles.css.map */

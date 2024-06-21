@@ -612,7 +612,7 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
   }
 }
 .flip-card-front i {
-    font-size: 20rem;
+    font-size: 15rem;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -749,5 +749,33 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
         }
       }
     }
+  }
+  /* Ninja Forms Styles */
+  .nf-form-fields-required { /* Hide "All * fields required" */
+    display: none;
   }  
+  .ninja-forms-req-symbol { /* Remove Required Ast */
+    display: none;
+  }
+  .ninja-forms-field {
+    background: none;
+    border: none;
+    border-bottom: 1px solid black; /* move to light/dark css */
+    padding: .3rem;
+    &:focus {
+      background-color: #fff; /* move to light/dark css */
+      transition: all .3s linear;
+    }
+  }
+  .ninja-forms-field:has(input:focus) ~ .nf-field-label { /* WORKING YET */
+    display: block;
+    border: 6px solid purple;
+  }
+  .nf-field-label { 
+    height: 1.5rem;
+    label {
+      display: none;
+    }
+  }
+  
 }
