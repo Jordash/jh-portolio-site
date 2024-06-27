@@ -116,3 +116,37 @@ body {
     } 
   }
 }
+
+//Estimator
+.nf-breadcrumbs {
+  li {
+    a {
+      color: $dkgray;
+      &:hover {
+        color: $link-hover;
+      }
+    }
+  }
+}
+
+.nf-breadcrumbs {
+  .active {
+    a {
+      color: $link-hover;
+    }
+  }
+}
+
+.nf-next,
+.nf-previous {
+  border: 1px solid $icon-color;
+  color: $dkgray; 
+}
+.calculate {
+  background: $button-gradient;
+  box-shadow: 5px 5px 2px 0px $button-shadow;
+  color: $type-base;
+  border-radius: .2rem;
+&:hover {
+  color: $button-hover-text;
+}}

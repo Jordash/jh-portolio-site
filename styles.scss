@@ -750,32 +750,103 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
       }
     }
   }
-  /* Ninja Forms Styles */
-  .nf-form-fields-required { /* Hide "All * fields required" */
-    display: none;
-  }  
-  .ninja-forms-req-symbol { /* Remove Required Ast */
-    display: none;
+}
+
+/* For all Ninja Forms */
+.nf-form-fields-required { /* Hide "All * fields required" */
+  display: none;
+}  
+.ninja-forms-req-symbol { /* Remove Required Ast */
+  display: none;
+}
+
+.ninja-forms-field {
+  border: none;
+  border-bottom: 1px solid black; /* move to light/dark css */
+  padding: .3rem;
+  &:focus {
+    background-color: #fff; /* move to light/dark css */
+    transition: all .3s linear;
   }
-  .ninja-forms-field {
-    background: none;
-    border: none;
-    border-bottom: 1px solid black; /* move to light/dark css */
-    padding: .3rem;
-    &:focus {
-      background-color: #fff; /* move to light/dark css */
-      transition: all .3s linear;
+  font-size: 1rem;
+}
+.ninja-forms-field:not(.calculate) {
+  background: none;
+}
+.nf-form-cont .field-wrap:has(input:focus) label {
+  opacity: 1;
+  transition: all .3s ease-out;
+}
+.nf-form-cont .field-wrap:has(input:focus) input::placeholder {
+  opacity: 0;
+  transition: all .3s ease-out;
+}
+.nf-field-label { 
+  height: 1.5rem;
+  label {
+    opacity: 0;
+  }
+}
+
+/* Only for Estimator Form */
+/* Animated Gradient Progress Bar */
+.nf-progress {
+  background: linear-gradient(270deg, #e5df23, #009ef7);
+  background-size: 400% 400%;
+
+  -webkit-animation: animatedProgressBar 5s ease infinite;
+  -moz-animation: animatedProgressBar 5s ease infinite;
+  animation: animatedProgressBar 5s ease infinite;
+}
+
+@-webkit-keyframes animatedProgressBar {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 51%}
+  100%{background-position:0% 50%}
+}
+@-moz-keyframes animatedProgressBar {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 51%}
+  100%{background-position:0% 50%}
+}
+@keyframes animatedProgressBar {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 51%}
+  100%{background-position:0% 50%}
+}
+.nf-breadcrumbs {
+  display: flex;
+  justify-content: space-between;
+  li {
+    a {
+      margin-right: 0 !important;
     }
   }
-  .ninja-forms-field:has(input:focus) ~ .nf-field-label { /* WORKING YET */
-    display: block;
-    border: 6px solid purple;
+}
+
+.nf-next,
+.nf-previous {
+  background: none;
+  font-size: 1rem;
+  padding: .5rem 1.5rem;
+  border-radius: .2rem;
+  &:hover {
+    cursor: pointer;
   }
-  .nf-field-label { 
-    height: 1.5rem;
-    label {
-      display: none;
-    }
+}
+
+.estimator h3 {
+  margin-bottom: 0;
+}
+
+//Calculate Estimate Button
+.calculate {
+  display: block;
+  margin: 1rem auto !important;
+  border: 0;
+  padding: .75rem 1.25rem;
+  font-size: 1.2rem;
+  &:hover {
+    cursor: pointer;
   }
-  
 }
