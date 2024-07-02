@@ -29,3 +29,41 @@ function toggleDarkMode() {
         darkIcon.setAttribute("display", "block");
     }
 }
+
+
+(function($) {
+    $(document).ready(function(){
+        //Load Project CPTs in Modal with AJAX
+        const trigger = $('.work-grid-image a');
+        trigger.on('click', function(event) {
+            event.preventDefault();
+            let path = $(this).attr('href');
+            $.ajax({
+                type: 'POST',
+                url: `${window.location}wp-admin/admin-ajax.php`,
+                dataType: 'html',
+                data: {
+                    action: 'get_projects', //this action is sent to functions.php
+                    ajax_data: path
+                },
+                success: function (res) {
+                    $("#outer-modal").fadeIn("fast");
+                    $("#inner-modal").fadeIn("fast").append(res);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log('An error has occured with your AJAX request: ', textStatus);
+                }
+            });
+            $(".modal-close").on("click", function () {
+                $("#outer-modal").fadeOut("fast");
+                $("#inner-modal").fadeOut("fast").empty();
+            });
+            $(document).on("keydown", function (e) {
+                if (e.key == "Escape") {
+                  $("#outer-modal").fadeOut("fast");
+                  $("#inner-modal").fadeOut("fast").empty();
+                }
+            });
+        });
+    });
+}(jQuery));
