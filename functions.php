@@ -19,9 +19,7 @@ function jh_styles() {
   //Load Local jQuery
 	 wp_enqueue_script( 
 	 	'jQuery', 
-	 	'https://code.jquery.com/jquery-3.7.1.min.js', 
-	 	array(), 
-	 	'3.7.1', 
+	 	'/wp-includes/js/jquery/jquery.min.js',  
 	 	array( 
 	 		'strategy'  => 'defer',
 	 	)

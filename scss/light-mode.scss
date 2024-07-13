@@ -30,6 +30,7 @@ $contact-link-hover: #C31FA3;
 $contact-bg-gradient: linear-gradient(75deg, #FFF8C4 0%, #ACE019 100%); 
 /* */ $contact-field-label: $dkgray; 
 /* */ $contact-field-border: #555555; 
+$modal-bg: #F8FEC3;
 
 body {
   background-color: $background;
@@ -150,3 +151,20 @@ body {
 &:hover {
   color: $button-hover-text;
 }}
+
+//Project Modal
+#outer-modal {
+  background-color: $modal-bg;
+  .modal-close {
+    color: $link-hover;
+  }
+  .inner-modal {
+    .project-header {
+      background-color: $modal-bg;
+      border-bottom: 1.5rem solid $modal-bg;
+      h2 {
+        border-bottom: 2px solid black;
+      }
+    }
+  }
+}

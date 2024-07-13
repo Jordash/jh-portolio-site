@@ -1,6 +1,6 @@
 <?php 
-    echo '<p>From project-partial.php Template</p>';
-    echo '<section class="project-header"><h2>' . get_the_title() . '</h2></section><hr />'; 
+    //echo '<p>From project-partial.php Template</p>';
+    echo '<section class="project-header"><h2>' . get_the_title() . '</h2></section>'; 
     $content = apply_filters( 'the_content', get_post_field( 'post_content', $post_id ) );
     echo $content;
 

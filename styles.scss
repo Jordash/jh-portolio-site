@@ -1,5 +1,19 @@
 /*
-* Define Colors
+* SECTIONS:
+*  - MIXINS
+*  - GENERAL SITE STYLES
+*  - HEADER/NAV STYLES
+*  - HOME STYLES
+*  - TYPOGRAPHY
+*  - TOGGLE SWITCHES
+*  - TOGGLE COLUMNS
+*  - SCROLL-BASED CARD FLIPS 
+*  - WORK GRID
+*  - WEBAWARDS SECTION
+*  - WEBSITE ESTIMATOR
+*  - CONTACT SECTION
+*  - ALL NINJA FORMS
+*  - MODAL PROJECT POP-UP STYLES
 */
 
 /* Light Palette */
@@ -8,7 +22,10 @@
 /* Dark Palette */
 @import 'scss/dark-mode.scss';
 
-/* Mixins */
+/********************************* 
+* BEGIN: MIXINS                  *
+*********************************/
+
 @mixin svg-icon-heading {
   font-family: 'fontawesome';
   font-size: 1.35rem;
@@ -31,6 +48,14 @@
   margin-right: auto;
 }
 
+/********************************* 
+* END: MIXINS                    *
+*********************************/
+
+/********************************* 
+* BEGIN: GENERAL SITE STYLES     *
+*********************************/
+
 #jh-logo {
   width: 25px;
   height: auto;
@@ -38,48 +63,6 @@
     fill: $dkgray; /* move to light/dark css */
   }
 }
-
-
-//Ex 2 Check media query and support
-@media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: scroll()) {
-    div {
-      // animation: fly-in linear both;
-      // animation-timeline: scroll();
-      // border: 2px solid red;
-    }
-  }
-}
-//Ex 3 Animate when in view
-@keyframes scale-up {
-  from {
-    scale: .5;
-  }
-}
-figure img {
-  animation: scale-up linear both;
-  animation-timeline: view();
-  animation-range: 25vh 75vh;
-}
-//Ex 4 Add shadows to nav on scroll
-@keyframes fade-in {
-  to {
-    opacity: 1
-  }
-}
-@keyframes shadow-in {
-  to {
-    box-shadow: 0 10px 10px #000300;
-  }
-}
-nav {
-  animation: 
-  fade-in linear both,
-  shadow-in linear both;
-  animation-timeline: scroll();
-}
-
-
 
 /* Remove default button styles */
 button {
@@ -135,9 +118,61 @@ body {
   }
 }
 
-/*
-* Home Screens
-*/
+/********************************* 
+* END: GENERAL SITE STYLES       *
+*********************************/
+
+/********************************* 
+* BEGIN: HEADER/NAV STYLES       *
+*********************************/
+
+.wp-site-blocks > .wp-block-group:first-of-type {
+  position: relative;
+  z-index: 1; //ensure menu is in front of type headings
+}
+.wp-block-navigation__submenu-container {
+  min-width: 280px !important; //widen dropdown
+  left: 0 !important;
+  right: auto !important;
+  li {
+    font-size: 77%; //reduce nav item size
+  }
+}
+
+/********************************* 
+* END: HEADER/NAV STYLES         *
+*********************************/
+
+//Ex 2 Check media query and support
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    div {
+      // animation: fly-in linear both;
+      // animation-timeline: scroll();
+      // border: 2px solid red;
+    }
+  }
+}
+//Ex 3 Animate when in view
+@keyframes scale-up {
+  from {
+    scale: .5;
+  }
+}
+figure img:not(#home-screens figure img, .house img) {
+  animation: scale-up linear both;
+  animation-timeline: view();
+  animation-range: 25vh 75vh;
+  border: 3px solid yellowgreen;
+}
+
+
+/********************************* 
+* BEGIN: HOME STYLES             *
+*********************************/
+
+/* Begin Home Screens */
+
 #home-screens {
   z-index: -1;
   position: absolute;
@@ -151,7 +186,6 @@ body {
   transform: rotate(-30deg) skew(30deg) translateX(150px); 
   /* https://blog.openreplay.com/transform-your-website--create-3d-magic-with-css-grid/ */
   figure {
-    background-color: #707070;
     margin: 0;
     box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.5);
   }
@@ -288,7 +322,6 @@ body {
   }
 }
 
-
 /* 
 * Homepage Rotating Headlines 
 */
@@ -311,10 +344,13 @@ h1 {
   position: relative;
 }
 
+/********************************* 
+* END: HOME STYLES               *
+*********************************/
 
-/* 
-* Typography 
-*/
+/********************************* 
+* BEGIN: TYPOGRAPHY              *
+*********************************/
 
 /* Clamp: min size, preferred size, max size) */
 h1 {
@@ -362,6 +398,10 @@ nav {
   }
 }
 
+/********************************* 
+* END: TYPOGRAPHY                *
+*********************************/
+
 /*
 * Work Filter Buttons
 */
@@ -379,8 +419,9 @@ nav {
   }
 }
 
-
-
+/********************************* 
+* BEGIN: TOGGLE SWITCHES         *
+*********************************/
 
 /* 
 * Toggle Swtich based on: https://github.com/NadeeshaEranjan 
@@ -475,6 +516,8 @@ label {
     left: 20px;
 }
 
+
+
 /* Switch to Col 2 */
 body:has( input[type="checkbox"]:checked) #toggle-column-2 {
     opacity: 1;
@@ -499,6 +542,13 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
   height: auto;
 }
 
+/********************************* 
+* END: TOGGLE SWITCHES           *
+*********************************/
+
+/********************************* 
+* BEGIN: TOGGLE COLUMNS          *
+*********************************/
 /*
 * Toggle Columns
 */
@@ -519,7 +569,14 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
   height: 0;
 }
 
-//Scroll-based Card Flips
+/********************************* 
+* END: TOGGLE COLUMNS            *
+*********************************/
+
+/********************************* 
+* BEGIN: SCROLL-BASED CARD FLIPS *
+*********************************/
+
 @keyframes spin-forward {
   0% {
     transform: rotateY(-20deg);
@@ -618,6 +675,14 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
     margin-right: auto;
 }
 
+/********************************* 
+* END: SCROLL-BASED CARD FLIPS   *
+*********************************/
+
+/********************************* 
+* BEGIN: WORK GRID               *
+*********************************/
+
 /*
 * Portfolio Section
 */
@@ -707,9 +772,14 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
   }
 }
 
-/*
-* Web Awards Section
-*/
+/********************************* 
+* END: WORK GRID                 *
+*********************************/
+
+/********************************* 
+* BEGIN: WEB AWARDS SECTION      *
+*********************************/
+
 #webawards {
   .wp-block-column {
     @include max-width-container;
@@ -719,18 +789,35 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
   }
 }
 
-/*
-* Website Cost Section
-*/
+/********************************* 
+* END: WEB AWARDS SECTION        *
+*********************************/
+
+/********************************* 
+* BEGIN: WEBSITE ESTIMATOR SECTION
+*********************************/
+
 #website-cost {
+  .wp-block-column {
+    position: relative;
+  }
   .wp-block-columns, h2, .wp-block-buttons {
     @include max-width-container;
   }
 }
+.house {
+  position: absolute;
+  margin-block-start: 0;
+}
 
-/*
-* Contact Section
-*/
+/********************************* 
+* END: WEBSITE ESTIMATOR SECTION *
+*********************************/
+
+/********************************* 
+* BEGIN: CONTACT SECTION         *
+*********************************/
+
 #contact {
   /* move color to dark/light styles */
   background: linear-gradient(to bottom, rgb(240, 240, 240), rgb(160, 160, 160));
@@ -752,11 +839,18 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
   }
 }
 
-/* For all Ninja Forms */
+/********************************* 
+* END: CONTACT SECTION           *
+*********************************/
+
+/********************************* 
+* BEGIN: ALL NINJA FORMS         *
+*********************************/
+
 .nf-form-fields-required { /* Hide "All * fields required" */
   display: none;
 }  
-.ninja-forms-req-symbol { /* Remove Required Ast */
+.ninja-forms-req-symbol { /* Remove Required Asterisk */
   display: none;
 }
 
@@ -851,7 +945,14 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
   }
 }
 
-//Modal Project
+/********************************* 
+* END: ALL NINJA FORMS           * 
+*********************************/
+
+/*********************************** 
+* BEGIN: MODAL PROJECT POP-UP STYLES
+***********************************/
+
 #outer-modal {
   display: none;
   max-width: calc(100% - 3rem) !important;
@@ -860,7 +961,6 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(80, 80, 80, 0.98);
   padding: 1.5rem;
   margin: 0;
   overflow: auto;
@@ -875,8 +975,7 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
   font-size: 3.5rem;
   font-weight: 400;
   line-height: 1;
-  color: #fff;
-  position: absolute;
+  position: fixed;
   top: 1rem;
   right: 1rem;
   background: none;
@@ -905,17 +1004,42 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
   .modal-column-scroll {
     position: relative;
   }
-  .modal-column-sticky {
+  .modal-column-sticky .sticky-group {
     position: sticky;
-    top: 0;
+    top: 6rem;
+    padding-left: 1rem;
+    ul {
+      padding-left: 0;
+      li {
+        list-style: none;
+        padding-left: 0;
+        font-weight: 400;
+        &::before {
+          content: '\f058';
+          font-family: 'fontawesome';
+          margin-right: .4rem;
+          font-weight: normal;
+          font-size: .9rem;
+        }
+      }
+    }
   }
   .project-header {
     position: sticky;
-    top: 0;
+    top: -3rem;
+    margin-bottom: 1.5rem;
     z-index: 1;
+    h2 {
+      margin: 0;
+      padding: 2rem 0;
+    }
   }
   .project-footer {
     display: flex;
     justify-content: space-between;
   }
 }
+
+/********************************* 
+* END: MODAL PROJECT POP-UP STYLES 
+*********************************/
