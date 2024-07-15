@@ -261,7 +261,6 @@ figure img:not(#home-screens figure img, .house img) {
   animation: scale-up linear both;
   animation-timeline: view();
   animation-range: 25vh 75vh;
-  border: 3px solid yellowgreen;
 }
 
 /********************************* 
