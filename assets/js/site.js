@@ -36,39 +36,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 (function($) {
     $(document).ready(function(){
-        //Load Project CPTs in Modal with AJAX
-        const trigger = $('.work-grid-image a');
-        trigger.on('click', function(event) {
-            event.preventDefault();
-            let path = $(this).attr('href');
-            console.log('path:', path);
-            $.ajax({
-                type: 'POST',
-                url: `${window.location}wp-admin/admin-ajax.php`,
-                dataType: 'html',
-                data: {
-                    action: 'get_projects', //this action is sent to functions.php
-                    ajax_data: path
-                },
-                success: function (res) {
-                    $("#outer-modal").fadeIn("fast");
-                    $("#inner-modal").fadeIn("fast").append(res);
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log('An error has occured with your AJAX request: ', textStatus);
-                }
-            });
-            $(".modal-close").on("click", function () {
-                $("#outer-modal").fadeOut("fast");
-                $("#inner-modal").fadeOut("fast").empty();
-            });
-            $(document).on("keydown", function (e) {
-                if (e.key == "Escape") {
-                  $("#outer-modal").fadeOut("fast");
-                  $("#inner-modal").fadeOut("fast").empty();
-                }
-            });
-        });
         //Begin Home Screen Staggered Drops
         const t1 = gsap.timeline();
         t1.from("#home-screens figure", { scale: 0, y: "-100vh", stagger: { amount: 0.5, from: "random" }, duration: .7 });
@@ -95,5 +62,72 @@ gsap.registerPlugin(ScrollTrigger);
 
         t2.from(".large-house-spin", { x: "50vw", scale: 0.7, opacity: 0, duration: .7, ease: "power4.out" }, ">-.5");
         t2.to(".large-house-spin", { x: "-50vw", opacity: 0, duration: .7 }, "> 1.5");
+
+        //Load Project CPTs in Modal with AJAX
+        const trigger = $('.work-grid-image a');
+        trigger.on('click', function(event) {
+            event.preventDefault();
+            let path = $(this).attr('href');
+            console.log('path:', path);
+            $("#inner-modal").append(
+                '<h1>LOADING PROJECT...</h1>'
+            );
+            $.ajax({
+                type: 'POST',
+                url: `${window.location}wp-admin/admin-ajax.php`,
+                dataType: 'html',
+                data: {
+                    action: 'get_projects', //this action is sent to functions.php
+                    ajax_data: path
+                },
+                success: function (res) {
+                    $("#outer-modal").fadeIn("fast");
+                    $("#inner-modal").fadeIn("fast").html(res);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log('An error has occured with your AJAX request: ', textStatus);
+                }
+            });
+            $(".modal-close").on("click", function (event) {
+                event.preventDefault();
+                $("#outer-modal").fadeOut("fast");
+                $("#inner-modal").fadeOut("fast").empty();
+            });
+            $(document).on("keydown", function (e) {
+                if (e.key == "Escape") {
+                  $("#outer-modal").fadeOut("fast");
+                  $("#inner-modal").fadeOut("fast").empty();
+                }
+            });
+        });
+
+        // Load Next/Previous Project into Modal
+        $('#outer-modal').on('click', '.project-footer a', function(event){
+            event.preventDefault();
+            let current_id = $(this).attr('id');
+            let link_class = $(this).attr('class');
+            //console.log('ID: ', current_id);
+            let data_array = [current_id, link_class];
+            $("#inner-modal").empty();
+            $("#inner-modal").append(
+                '<h1>LOADING NEXT PROJECT...</h1>'
+            );
+            $.ajax({
+                type: 'POST',
+                url: `${window.location}wp-admin/admin-ajax.php`,
+                dataType: 'html',
+                data: {
+                    action: 'load_adjacent_project', //this action is sent to functions.php
+                    ajax_data: data_array
+                },
+                success: function (res) {
+                    $("#outer-modal").fadeIn("fast");
+                    $("#inner-modal").fadeIn("fast").html(res);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log('An error has occured with your AJAX request: ', textStatus);
+                }
+            });
+        });
     });
 }(jQuery));

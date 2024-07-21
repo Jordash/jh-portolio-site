@@ -19,7 +19,9 @@ function jh_styles() {
   //Load Local jQuery
 	 wp_enqueue_script( 
 	 	'jQuery', 
-	 	'/wp-includes/js/jquery/jquery.min.js',  
+	 	'/wp-includes/js/jquery/jquery.min.js',
+		array(),
+			'3.7.1',  
 	 	array( 
 	 		'strategy'  => 'defer',
 	 	)
@@ -117,3 +119,76 @@ function load_projects() {
 }
 add_action('wp_ajax_get_projects', 'load_projects');
 add_action('wp_ajax_nopriv_get_projects', 'load_projects');
+
+
+
+// AJAX Request to Load Next/Prev CPT (Project)
+function load_adjacent_project() {
+
+	// Retrieve POST data from AJAX Request
+	$data_array = $_POST['ajax_data'];
+	$page_id = intval($data_array[0]);
+	$link_class = $data_array[1];
+	$link_class = sanitize_text_field($link_class);
+	
+	$response = ''; //Initialize response variable
+
+	global $post; //set global for next and prev functions to reference
+	$post = get_post( $page_id ); //set $post to passed in page ID
+	
+	// 23 Hands For Heroes
+	// 365 The Karma Group Website
+	// 371 Granite Valley Website
+	// 374 Medix Ambulance Website
+	// 375 CrossFit Icebowl 2016 T-shirt
+	// 377 Bellin CHCL Campaign Website
+	// 378 Donut Mile T-shirt
+	// 379 Solihten Institute Website
+	// 380 SplitStar Logo
+	// 381 Mon Amie Boutique Website
+	// 382 Cedar Lake Sales Boat Show Campaign
+	// 383 CrossFit Icebowl 2017 T-shirt
+	// 384 Astrea Internet Website
+	// 385 Easter Puzzle Website
+	// 452 Heider Tractor Gear
+	// 453 Solace Urns Shopify Website
+	// 492 The Karma Group Blog
+	// 545 Mon Amie Boutique Email
+	
+
+	if (!$post) {
+		$response = 'Invalid post ID.';
+		echo $response;
+		exit;
+	}
+	
+	if ($link_class === 'next-project') {
+		//Use ob_start() and ob_get_clean() to capture the output of get_template_part() and assign it to $response.
+		$post = get_next_post(); //fetch the next post
+		if ( strlen($post->ID) < 1 ) {
+			echo 'There are no more projects.';
+			exit;
+		}
+		setup_postdata($post);
+		ob_start();
+		get_template_part('templates/project-partial');
+		$response = ob_get_clean();
+		wp_reset_postdata();
+	} elseif ($link_class === 'prev-project') {
+		$post = get_previous_post(); //fetch the previous post
+		if ( strlen($post->ID) < 1 ) {
+			echo 'There are no previous projects.';
+			exit;
+		}
+		setup_postdata($post);
+		ob_start();
+		get_template_part('templates/project-partial');
+		$response = ob_get_clean();
+		wp_reset_postdata();
+	}
+
+	echo $response;
+	exit;
+}
+add_action('wp_ajax_load_adjacent_project', 'load_adjacent_project');
+add_action('wp_ajax_nopriv_load_adjacent_project', 'load_adjacent_project');
