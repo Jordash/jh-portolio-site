@@ -13,24 +13,34 @@ $h1-rotate-highlight: #E6DF22;
 $h1-rotate-highlight-shadow: rgba(112, 112, 112, 1);                        
 $button-gradient: linear-gradient(75deg, #E5DF23 0%, #ABE01A 100%);       
 $button-shadow: rgba(112, 112, 112, 1); 
-$button-hover-text: #fff;        
+$button-hover-text: #fff; 
+//Services Section
+$flip-card-front: #9CB541;
+$flip-card-back: #CDE96E;
+$flip-card-content: #0F5260;
+//WebAward Section       
 $webaward-bg-gradient: linear-gradient(150deg, #F0F0F0 0%, #A0A0A0 100%);
 $webaward-base-type: $dkgray;                                               
 $webaward-type-highlight: #58C9E9; 
+//Cost Section
 $cost-heading-base: #fff;  
 $cost-heading-highlight: #F6DF02; 
 $cost-type: #000; 
 $cost-bg-gradient: linear-gradient(75deg, #7EC4F3 0%, #206BC3 100%); 
+//Contact Section
 $contact-type-base: #000; 
 $contact-type-highlight: #1E8AC3; 
 $contact-link-base: #1E8AC3; 
 $contact-link-hover: #C31FA3; 
-/* */ $contact-button-gradient: linear-gradient(75deg, #47CCEB 0%, #1F8AC3 100%); 
-/* */ $contact-button-type: #E4E4E4; 
+$contact-button-gradient: linear-gradient(180deg, #47CCEB 0%, #1F8AC3 100%); 
+$contact-button-type: #fff; 
 $contact-bg-gradient: linear-gradient(75deg, #FFF8C4 0%, #ACE019 100%); 
 /* */ $contact-field-label: $dkgray; 
 /* */ $contact-field-border: #555555; 
-$modal-bg: #F8FEC3;
+//Project Modal
+$modal-bg: #E7F287;
+$modal-elements: #1D6C76;
+$modal-body-text: #000;
 
 body {
   background-color: $background;
@@ -62,9 +72,10 @@ body {
     box-shadow: 5px 5px 2px 0px $button-shadow;
     color: $type-base;
     border-radius: .2rem;
-  &:hover {
-    color: $button-hover-text;
-  }}
+    &:hover {
+      color: $button-hover-text;
+    }
+  }
   nav {
     border-bottom: 1px solid $nav-border;
   }
@@ -74,9 +85,13 @@ body {
         color: $icon-color;
       }
     }
-    .flip-card-front,
+    .flip-card-front {
+      color: $flip-card-content;
+      background: $flip-card-front;
+    }
     .flip-card-back {
-      color: $icon-color;
+      color: $flip-card-content;
+      background: $flip-card-back;
     }
   }
   #webawards {
@@ -114,57 +129,77 @@ body {
           color: $contact-link-hover;
         }
       }
+    }
+    .submit-wrap input[type="submit"] {
+      color: $contact-button-type;
+      background: $contact-button-gradient;
     } 
   }
-}
+  //Estimator
+  .nf-breadcrumbs {
+    li {
+      a {
+        color: $dkgray;
+        &:hover {
+          color: $link-hover;
+        }
+      }
+    }
+  }
 
-//Estimator
-.nf-breadcrumbs {
-  li {
-    a {
-      color: $dkgray;
-      &:hover {
+  .nf-breadcrumbs {
+    .active {
+      a {
         color: $link-hover;
       }
     }
   }
-}
 
-.nf-breadcrumbs {
-  .active {
-    a {
-      color: $link-hover;
+  .nf-next,
+  .nf-previous {
+    border: 1px solid $icon-color;
+    color: $dkgray; 
+  }
+  .calculate {
+    background: $button-gradient;
+    box-shadow: 5px 5px 2px 0px $button-shadow;
+    color: $type-base;
+    border-radius: .2rem;
+    &:hover {
+      color: $button-hover-text;
     }
   }
-}
 
-.nf-next,
-.nf-previous {
-  border: 1px solid $icon-color;
-  color: $dkgray; 
-}
-.calculate {
-  background: $button-gradient;
-  box-shadow: 5px 5px 2px 0px $button-shadow;
-  color: $type-base;
-  border-radius: .2rem;
-&:hover {
-  color: $button-hover-text;
-}}
-
-//Project Modal
-#outer-modal {
-  background-color: $modal-bg;
-  .modal-close {
-    color: $link-hover;
-  }
-  .inner-modal {
-    .project-header {
-      background-color: $modal-bg;
-      border-bottom: 1.5rem solid $modal-bg;
+  //Project Modal
+  #outer-modal {
+    background-color: $modal-bg;
+    .modal-close {
+      color: $link-hover;
+    }
+    .inner-modal {
+      color: $modal-body-text;
       h2 {
-        border-bottom: 2px solid black;
+        color: $modal-elements;
+      }
+      hr {
+        border-color: $modal-elements;
+        border-style: solid;
+      }
+      .project-header {
+        background-color: $modal-bg;
+        border-bottom: 1.5rem solid $modal-bg;
+        h2 {
+          border-bottom: 2px solid $modal-elements;
+        }
+      }
+      .project-footer a {
+        color: $modal-elements;
+        text-decoration: none;
+        &:hover {
+          color: $link-hover;
+        }
       }
     }
   }
 }
+

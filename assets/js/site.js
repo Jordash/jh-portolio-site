@@ -65,13 +65,17 @@ gsap.registerPlugin(ScrollTrigger);
 
         //Load Project CPTs in Modal with AJAX
         const trigger = $('.work-grid-image a');
+        const loader = '<figure style="width: 100%; height: 90vh; display: flex; flex-wrap:wrap; align-items: center; justify-content: center; align-content:center"><div style="text-align:center; width: 100%;"><h4>LOADING PROJECT...</h4></div><!-- By Sam Herbert (@sherb), for everyone. More @ http://goo.gl/7AJzbL --><div><svg width="144" height="144" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" stroke="#9FC417"><g fill="none" fill-rule="evenodd" stroke-width="2"><circle cx="22" cy="22" r="1"><animate attributeName="r" begin="0s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite" /><animate attributeName="stroke-opacity" begin="0s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite" /></circle><circle cx="22" cy="22" r="1"><animate attributeName="r" begin="-0.9s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1" keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite" /><animate attributeName="stroke-opacity" begin="-0.9s" dur="1.8s" values="1; 0" calcMode="spline" keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite" /></circle></g></svg></div></figure>';
         trigger.on('click', function(event) {
             event.preventDefault();
             let path = $(this).attr('href');
             console.log('path:', path);
-            $("#inner-modal").append(
-                '<h1>LOADING PROJECT...</h1>'
-            );
+            $('.modal-close').hide();
+            $("body").addClass("no-scroll");
+            $("#outer-modal").fadeIn("fast");
+            $("#inner-modal").fadeIn("fast");
+            $("#inner-modal").append(loader);
+            //Remove scroll behavior from document while modal active
             $.ajax({
                 type: 'POST',
                 url: `${window.location}wp-admin/admin-ajax.php`,
@@ -81,8 +85,8 @@ gsap.registerPlugin(ScrollTrigger);
                     ajax_data: path
                 },
                 success: function (res) {
-                    $("#outer-modal").fadeIn("fast");
-                    $("#inner-modal").fadeIn("fast").html(res);
+                    $("#inner-modal").html(res);
+                    $('.modal-close').show();
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log('An error has occured with your AJAX request: ', textStatus);
@@ -92,11 +96,13 @@ gsap.registerPlugin(ScrollTrigger);
                 event.preventDefault();
                 $("#outer-modal").fadeOut("fast");
                 $("#inner-modal").fadeOut("fast").empty();
+                $("body").removeClass("no-scroll");
             });
             $(document).on("keydown", function (e) {
                 if (e.key == "Escape") {
                   $("#outer-modal").fadeOut("fast");
                   $("#inner-modal").fadeOut("fast").empty();
+                  $("body").removeClass("no-scroll");
                 }
             });
         });
@@ -106,12 +112,11 @@ gsap.registerPlugin(ScrollTrigger);
             event.preventDefault();
             let current_id = $(this).attr('id');
             let link_class = $(this).attr('class');
+            $('.modal-close').hide();
             //console.log('ID: ', current_id);
             let data_array = [current_id, link_class];
             $("#inner-modal").empty();
-            $("#inner-modal").append(
-                '<h1>LOADING NEXT PROJECT...</h1>'
-            );
+            $("#inner-modal").append(loader);
             $.ajax({
                 type: 'POST',
                 url: `${window.location}wp-admin/admin-ajax.php`,
@@ -123,6 +128,7 @@ gsap.registerPlugin(ScrollTrigger);
                 success: function (res) {
                     $("#outer-modal").fadeIn("fast");
                     $("#inner-modal").fadeIn("fast").html(res);
+                    $('.modal-close').show();
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log('An error has occured with your AJAX request: ', textStatus);

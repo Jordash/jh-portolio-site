@@ -118,6 +118,10 @@ body {
   }
 }
 
+.max-width-col-1200 {
+  @include max-width-container;
+}
+
 /********************************* 
 * END: GENERAL SITE STYLES       *
 *********************************/
@@ -621,7 +625,6 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
   animation: spin-forward linear both;
   animation-timeline: view();
   animation-range: 25vh 75vh;
-  background: $dkgray; /* move to light/dark css */
   margin-block-start: 0; /* prevents offset from card back */
 }
 .flip-card-back {
@@ -631,7 +634,6 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
   animation: spin-back linear both;
   animation-timeline: view();
   animation-range: 25vh 75vh;
-  background: black; /* move to light/dark css */
 }
 .flip-card-back li {
   margin-bottom: 1.2rem;
@@ -693,6 +695,7 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
 
 /*
 * Work Grid
+* Project classes: work-grid-icebowl16, work-grid-karma, work-grid-medix, work-grid-gv, work-grid-chcl, work-grid-donut, work-grid-mab, work-grid-solihten, work-grid-splitstar, work-grid-cls, work-grid-icebowl17, work-grid-mab-email, work-grid-astrea, work-grid-hfh, work-grid-easter, work-grid-solace, work-grid-heider-tractor, work-grid-karma-blog
 */
 #work-grid {
   margin-top: 1.5rem;
@@ -701,74 +704,130 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
       opacity: .3;
       transition: all .3s ease;
     }
-  .work-grid-icebowl16 {
-    grid-column: span 2;
-    grid-row: span 1;
-    img{
-      object-fit: cover;
-      aspect-ratio: 16/8;
-    } 
-  }
-  .work-grid-karma {
-    grid-column: span 1;
-    grid-column: span 1;
-  }
-  .work-grid-medix {
-    grid-column: span 1;
-    grid-column: span 1;
-  }
-  .work-grid-gv {
-    grid-column: span 1;
-    grid-column: span 1;
-  }
-  .work-grid-chcl {
-    grid-column: span 1;
-    grid-column: span 1;
-  }
-  .work-grid-donut {
-    grid-column: span 1;
-    grid-column: span 1;
-  }
-  .work-grid-solihten {
-    grid-column: span 1;
-    grid-column: span 1;
-  }
-  .work-grid-splitstar {
-    grid-column: span 2;
-    grid-row: span 1;
-    img{
-      object-fit: cover;
-      aspect-ratio: 16/8;
-    } 
-  }
-  .work-grid-mab {
-    grid-column: span 2;
-    grid-row: span 2;
-  }
-  .work-grid-bc {
-    grid-column: span 1;
-    grid-column: span 1;
-  }
-  .work-grid-cls {
-    grid-column: span 1;
-    grid-column: span 1;
-  }
-  .work-grid-icebowl17 {
-    grid-column: span 1;
-    grid-column: span 1;
-  }
-  .work-grid-astrea {
-    grid-column: span 1;
-    grid-column: span 1;
-  }
-  .work-grid-hfh {
-    grid-column: span 1;
-    grid-column: span 1;
-  }
-  .work-grid-easter {
-    grid-column: span 1;
-    grid-column: span 1;
-  }
+    
+    /* 0px to 761 - 3 col / 6 rows */
+    grid-template-columns: repeat( 3, 1fr ); //start with 3 cols 6 rows, all cells equal
+
+    @media screen and (min-width:762px){
+      /* 762px to 9522 - 5col / 4 rows */
+
+      grid-template-columns: repeat( 4, 1fr ); // go to 4 cols, 6 rows, varying cells
+      .work-grid-icebowl16 {
+        grid-column: span 2;
+        grid-row: span 1;
+        img{
+          object-fit: cover;
+          aspect-ratio: 16/8;
+        } 
+      }
+      .work-grid-splitstar {
+        grid-column: span 2;
+        grid-row: span 1;
+        img{
+          object-fit: cover;
+          aspect-ratio: 16/8;
+        } 
+      }
+      .work-grid-mab {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+      .work-grid-solace {
+        grid-column: span 2;
+        grid-row: span 1;
+        img{
+          object-fit: cover;
+          aspect-ratio: 16/8;
+          object-position: 50% 35%;
+        }
+      }
+      .work-grid-solihten {
+        grid-area: 2 / 4 / 3 / 5;
+      }
+    }
+    @media screen and (min-width:953px){
+      /* 953px to 1142 - 5col / 4 rows */
+
+      grid-template-columns: repeat( 5, 1fr ); // go to 5 cols, 5 rows, varying cells
+      .work-grid-solihten {
+        grid-area: 2 / 5 / 3 / 6;
+      }
+      .work-grid-hfh {
+        grid-area: 4 / 4 / 5 / 6;
+        img{
+          object-fit: cover;
+          aspect-ratio: 16/8;
+          object-position: 50% 50%;
+        }
+      }
+    }
+    @media screen and (min-width:1143px){
+      /* 1143px to 1333 - 6col / 4 rows */
+
+      grid-template-columns: repeat( 6, 1fr ); // go to 6 cols, 4 rows, varying cells
+
+      .work-grid-solihten {
+        grid-area: 2 / 6 / 3 / 7;
+      }
+      .work-grid-hfh {
+        grid-column: span 1;
+        grid-row: span 1;        
+        img{
+          aspect-ratio: auto;
+        }
+      }
+    }
+    @media screen and (min-width:1334px){
+      /* 1334px to 1523 - 7cols / 4 rows */
+
+      grid-template-columns: repeat( 7, 1fr ); // go to 7 cols, 4 rows, varying cells
+
+      .work-grid-cls {
+        grid-area: 2 / 6 / 4 / 8;
+      }
+      .work-grid-gv {
+        grid-area: 1 / 5 / 2 / 7;
+        img{
+          object-fit: cover;
+          aspect-ratio: 16/8;
+          object-position: 50% 80%;
+        }
+      }
+      .work-grid-karma-blog {
+        grid-area: 4 / 5 / 5 / 7;
+        img{
+          object-fit: cover;
+          aspect-ratio: 16/8;
+          object-position: 50% 50%;
+        }
+      }
+    }
+    @media screen and (min-width:1524px){
+      /* 1524px and up - 8cols / 4 rows */
+      grid-template-columns: repeat( 8, 1fr ); // go to 8 cols, 4 rows, varying cells
+
+      .work-grid-gv {
+        grid-area: 1 / 5 / 3 / 7;
+        img{
+          object-fit: cover;
+          aspect-ratio: auto;
+        }
+      }
+      .work-grid-mab-email {
+        grid-area: 2 / 7 / 3 / 9;
+        img{
+          object-fit: cover;
+          aspect-ratio: 16/8;
+          object-position: 50% 50%;
+        }
+      }
+      .work-grid-cls {
+        grid-area: 3 / 7 / 5 / 9;
+      }
+      .work-grid-solihten {
+        grid-area: 3 / 6 / 4 / 7;
+      }
+    }
 }
 
 /********************************* 
@@ -780,6 +839,8 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
 *********************************/
 
 #webawards {
+  position: relative;
+  z-index: 1;
   .wp-block-column {
     @include max-width-container;
   }
@@ -818,8 +879,6 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
 *********************************/
 
 #contact {
-  /* move color to dark/light styles */
-  background: linear-gradient(to bottom, rgb(240, 240, 240), rgb(160, 160, 160));
   .wp-block-columns {
     @include max-width-container;
   }
@@ -834,6 +893,16 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
           font-size: 1rem; //TODO: clamp this 
         }
       }
+    }
+  }
+  .submit-wrap input[type="submit"] {
+    font-family: 'IBM Plex', sans-serif;
+    box-shadow: 5px 5px 2px 0px rgb(112, 112, 112);
+    border-radius: .2rem;
+    padding: calc(0.667em + 2px) calc(1.333em + 2px);
+    border: 0;
+    &:hover{
+      cursor: pointer;
     }
   }
 }
@@ -862,6 +931,10 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
     transition: all .3s linear;
   }
   font-size: 1rem;
+}
+textarea.ninja-forms-field {
+  border: 1px solid black; /* move to light/dark css */
+  font-family: 'IBM Plex', sans-serif;
 }
 .ninja-forms-field:not(.calculate) {
   background: none;
@@ -1000,6 +1073,12 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
   margin-right: auto;
   margin-bottom: 100px;
   padding-bottom: 100px;
+  h3 {
+    font-size: clamp(1.5rem, 1rem + 2.5vw, 2.5rem);
+  }
+  h4 {
+    font-size: clamp(1rem, .7rem + 2.5vw, 1.75rem);
+  }
   .modal-column-scroll {
     position: relative;
   }
@@ -1039,6 +1118,10 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
   }
 }
 
+.no-scroll {
+  /* remove page scrolling while modal active */
+  overflow: hidden;
+}
 /********************************* 
 * END: MODAL PROJECT POP-UP STYLES 
 *********************************/
