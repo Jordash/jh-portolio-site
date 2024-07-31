@@ -8,6 +8,7 @@
 *  - TOGGLE SWITCHES
 *  - TOGGLE COLUMNS
 *  - SCROLL-BASED CARD FLIPS 
+*  - SCROLL-BASED REVERSING COLUMNS
 *  - WORK GRID
 *  - WEBAWARDS SECTION
 *  - WEBSITE ESTIMATOR
@@ -679,6 +680,84 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
 /********************************* 
 * END: SCROLL-BASED CARD FLIPS   *
 *********************************/
+
+/*********************************
+* BEGIN: SCROLL-BASED REV COLUMNS*
+*********************************/
+
+#toggle-column-2 {
+  h3 {
+    width: 100%;
+  }
+  .columns {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    overflow-y: hidden;
+    position: relative;
+    .column {
+      border: 1px solid salmon;
+      display: flex;
+      flex-direction: column;
+      ul {
+        list-style: none;
+        padding-left: 0;
+        li {
+          color: blue; /* move to light/dark css */
+          background-color: #ccc; /* move to light/dark css*/
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+          align-content: center;
+          padding: 2rem;
+          text-align: center;
+          font-size: 1.4rem;
+          font-weight: 500;
+          line-height: 1.1;
+          margin: 1.5rem 0;
+          border-radius: 1rem;
+          min-height: 200px;
+          &:first-child { margin-top: 0; }
+          &:last-child { margin-bottom: 0; }
+          em {
+            font-style: normal;
+            font-size: 1rem;
+            display: block;
+            width: 100%;
+          }
+        }
+      }
+    }
+    //Shift column up (-100%), but keep in view (100vh)
+    .column-reverse {
+      transform: translateY(calc(-100% + 100vh));
+      flex-direction: column-reverse;
+      //Hook Animation To Reverse Columns On Scroll
+      animation: adjust-position linear forwards;
+      animation-timeline: scroll(root block);
+    }
+  }
+  //Reversing Columns Animation
+  @keyframes adjust-position {
+    /* Start position: shift column up, but in view */
+    from {
+      opacity: .2;
+      transform: translateY(calc(-100% + 100vh));
+    }
+    /* End position: shift column down, but in view */
+    to {
+      opacity: 1;
+      transform: translateY(calc(100% - 100vh));
+    }
+  }
+}
+
+
+/*********************************
+* END: SCROLL-BASED REV COLUMNS  *
+*********************************/
+
 
 /********************************* 
 * BEGIN: WORK GRID               *
