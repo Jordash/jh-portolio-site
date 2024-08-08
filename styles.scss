@@ -406,22 +406,7 @@ nav {
 * END: TYPOGRAPHY                *
 *********************************/
 
-/*
-* Work Filter Buttons
-*/
-#filter-buttons {
-  a.wp-element-button {
-    background-color: unset;
-    color: gray; /* move to light/dark css */
-  }
-  a:hover {
-    background-color: red; /* move to light/dark css */
-    transition: all ease .5s;
-  }
-  a.clicked { /* add class with JS */
-    background-color: $dkgray; /* move to light/dark css */
-  }
-}
+
 
 /********************************* 
 * BEGIN: TOGGLE SWITCHES         *

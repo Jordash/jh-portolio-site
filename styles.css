@@ -54,6 +54,12 @@ body .wp-block-button__link {
 }
 body .wp-block-button__link:hover {
   color: #fff;
+  background: linear-gradient(75deg, #5ed428 0%, #24c9ce 100%);
+  transition: all ease 0.5s;
+}
+body .wp-block-button__link.clicked { /* class added with JS */
+  color: #fff !important;
+  background: #707070 !important;
 }
 body nav {
   border-bottom: 1px solid #E0E0E0;
@@ -130,6 +136,9 @@ body .calculate {
 }
 body .calculate:hover {
   color: #fff;
+}
+body .thumb-highlight {
+  outline: 4px solid #25c9cd;
 }
 body #outer-modal {
   background-color: #E7F287;
@@ -243,6 +252,9 @@ body.dark-mode .calculate {
 }
 body.dark-mode .calculate:hover {
   color: #fff;
+}
+body.dark-mode .thumb-highlight {
+  outline: 4px solid #25c9cd;
 }
 body.dark-mode #outer-modal {
   background-color: #1D6C76;
@@ -620,21 +632,6 @@ nav {
 /********************************* 
 * END: TYPOGRAPHY                *
 *********************************/
-/*
-* Work Filter Buttons
-*/
-#filter-buttons a.wp-element-button {
-  background-color: unset;
-  color: gray; /* move to light/dark css */
-}
-#filter-buttons a:hover {
-  background-color: red; /* move to light/dark css */
-  transition: all ease 0.5s;
-}
-#filter-buttons a.clicked { /* add class with JS */
-  background-color: #707070; /* move to light/dark css */
-}
-
 /********************************* 
 * BEGIN: TOGGLE SWITCHES         *
 *********************************/

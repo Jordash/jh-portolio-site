@@ -32,7 +32,7 @@ function toggleDarkMode() {
 
 //Register GSAP Plugins
 gsap.registerPlugin(ScrollTrigger);
-//TODO: Register Flip Plugin if used
+gsap.registerPlugin(Flip);
 
 (function($) {
     $(document).ready(function(){
@@ -135,5 +135,44 @@ gsap.registerPlugin(ScrollTrigger);
                 }
             });
         });
+
+        //Begin Work Grid Sorting
+        $('#filter-buttons a').on('click', function(e){
+            e.preventDefault();
+            const sortby = $(this).attr('href').slice(1);
+            runFilter(sortby);
+        });
+        function runFilter(sort) {
+            const thumbs = $(".work-grid-image");
+            if (sort === 'all') {
+                thumbs.fadeTo("fast",1).removeClass('thumb-highlight');
+                $('#filter-buttons a').removeClass('clicked');
+                $('.' + sort + ' a').addClass('clicked');
+            }
+            else if (sort === 't-shirts') {
+                thumbs.fadeTo("slow",0.1).removeClass('thumb-highlight');
+                $("#work-grid .t-shirts").fadeTo("fast",1).addClass('thumb-highlight');
+                $('#filter-buttons a').removeClass('clicked');
+                $('.' + sort + ' a').addClass('clicked');
+            }
+            else if (sort === 'emails') {
+                thumbs.fadeTo("slow",0.1).removeClass('thumb-highlight');
+                $("#work-grid .emails").fadeTo("fast",1).addClass('thumb-highlight');
+                $('#filter-buttons a').removeClass('clicked');
+                $('.' + sort + ' a').addClass('clicked');
+            }
+            else if (sort === 'logos') {
+                thumbs.fadeTo("slow",0.1).removeClass('thumb-highlight');
+                $("#work-grid .logos").fadeTo("fast",1).addClass('thumb-highlight');
+                $('#filter-buttons a').removeClass('clicked');
+                $('.' + sort + ' a').addClass('clicked');
+            }
+            else if (sort === 'websites') {
+                thumbs.fadeTo("slow",0.1).removeClass('thumb-highlight');
+                $("#work-grid .websites").fadeTo("fast",1).addClass('thumb-highlight');
+                $('#filter-buttons a').removeClass('clicked');
+                $('.' + sort + ' a').addClass('clicked');
+            }
+        }
     });
 }(jQuery));

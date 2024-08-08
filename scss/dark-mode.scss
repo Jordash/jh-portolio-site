@@ -37,6 +37,8 @@ $contact-button-type: #fff;
 $contact-bg-gradient: linear-gradient(75deg, #707070 0%, #000 100%);
 $contact-field-label: $dkgray;
 $contact-field-border: pink;
+//Work Thumbs
+$thumb-highlight: #25c9cd;
 //Project Modal
 $modal-bg: #1D6C76;
 $modal-elements: #F8FEC2;
@@ -139,7 +141,8 @@ body.dark-mode {
       color: $button-hover-text;
     }
   }
-
+  //Work Thumb Selection
+  .thumb-highlight { outline: 4px solid $thumb-highlight }
   //Project Modal
   #outer-modal {
     background-color: $modal-bg;

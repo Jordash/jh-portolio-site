@@ -49,6 +49,17 @@ function jh_styles() {
 	  )
 	);
 
+    // Load Local Flip
+	wp_enqueue_script( 
+		'gsapFlip', 
+		get_template_directory_uri() . '/assets/js/Flip.min.js', 
+		array('gsap'), 
+		'3.12.5', 
+		array( 
+		  'strategy'  => 'defer',
+		)
+	  );
+
   // Load Local Site JS
 	wp_enqueue_script( 
 	  'jh-site', 

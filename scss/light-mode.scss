@@ -14,6 +14,7 @@ $h1-rotate-highlight-shadow: rgba(112, 112, 112, 1);
 $button-gradient: linear-gradient(75deg, #E5DF23 0%, #ABE01A 100%);       
 $button-shadow: rgba(112, 112, 112, 1); 
 $button-hover-text: #fff; 
+$button-gradient-hover: linear-gradient(75deg, #5ed428 0%, #24c9ce 100% );
 //Services Section
 $flip-card-front: #9CB541;
 $flip-card-back: #CDE96E;
@@ -36,7 +37,9 @@ $contact-button-gradient: linear-gradient(180deg, #47CCEB 0%, #1F8AC3 100%);
 $contact-button-type: #fff; 
 $contact-bg-gradient: linear-gradient(75deg, #FFF8C4 0%, #ACE019 100%); 
 /* */ $contact-field-label: $dkgray; 
-/* */ $contact-field-border: #555555; 
+/* */ $contact-field-border: #555555;
+//Work Thumbs
+$thumb-highlight: #25c9cd; 
 //Project Modal
 $modal-bg: #E7F287;
 $modal-elements: #1D6C76;
@@ -74,6 +77,12 @@ body {
     border-radius: .2rem;
     &:hover {
       color: $button-hover-text;
+      background:$button-gradient-hover; 
+      transition: all ease .5s;
+    }
+    &.clicked { /* class added with JS */
+      color: #fff !important;
+      background: $dkgray !important; 
     }
   }
   nav {
@@ -169,7 +178,8 @@ body {
       color: $button-hover-text;
     }
   }
-
+  //Work Thumb Selection
+  .thumb-highlight { outline: 4px solid $thumb-highlight }
   //Project Modal
   #outer-modal {
     background-color: $modal-bg;
