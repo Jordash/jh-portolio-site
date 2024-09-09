@@ -30,17 +30,14 @@ body a {
 body a:hover {
   color: #9FC417;
 }
-body h1.h1-current {
+body h1.h1-rotate {
   color: #E6DF22;
   text-shadow: 0.5vw 0.5vw 0.1rem rgb(112, 112, 112);
 }
 @media (min-width: 1000px) {
-  body h1.h1-current {
+  body h1.h1-rotate {
     text-shadow: 0.35rem 0.35rem 0.1rem rgb(112, 112, 112);
   }
-}
-body h1.h1-rotate {
-  color: #707070;
 }
 body h2 em {
   color: #B1E019;
@@ -551,22 +548,46 @@ figure img:not(#home-screens figure img, .house img) {
 */
 #intro {
   position: relative;
+  height: 100%;
 }
-
-h1:first-of-type {
+#intro > h1 {
   padding-top: 8vh;
 }
 
-.h1-current {
-  opacity: 1;
-  font-weight: 600;
+.h1-rotate-group {
+  overflow: hidden;
+  position: relative;
+  height: 20rem;
   z-index: 1;
+  perspective: 500px;
+}
+.h1-rotate-group h1 {
+  margin-left: 0 !important;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
 }
 
+@media (min-width: 600px) {
+  .h1-rotate-group {
+    height: 9rem;
+  }
+}
+@media (min-width: 1200px) {
+  .h1-rotate-group {
+    height: 12rem;
+  }
+}
 .h1-rotate {
-  opacity: 0.1;
-  z-index: -1;
-  position: relative;
+  font-weight: 600;
+  position: absolute;
+  margin: 0;
+  line-height: 1;
+  transform-style: preserve-3d;
+  opacity: 0;
+}
+
+.headChar {
+  backface-visibility: hidden;
 }
 
 /********************************* 
@@ -765,7 +786,6 @@ body:not(:has(input[type=checkbox]:checked)) #toggle-column-1 {
 * Toggle Columns
 */
 #toggle-column-1 {
-  border: 1px solid sandybrown;
   opacity: 1;
 }
 #toggle-column-1 .wp-block-column {
@@ -775,7 +795,6 @@ body:not(:has(input[type=checkbox]:checked)) #toggle-column-1 {
 }
 
 #toggle-column-2 {
-  border: 1px solid plum;
   opacity: 0;
   height: 0;
 }

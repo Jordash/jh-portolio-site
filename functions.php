@@ -38,7 +38,7 @@ function jh_styles() {
 	  )
 	);
 
-  // Load Local ScrollTrigger
+  // Load Local GSAP ScrollTrigger
 	wp_enqueue_script( 
 	  'gsapScrollTrigger', 
 	  get_template_directory_uri() . '/assets/js/ScrollTrigger.min.js', 
@@ -49,10 +49,21 @@ function jh_styles() {
 	  )
 	);
 
-    // Load Local Flip
+    // Load Local GSAP Flip (Currently Unused)
+	// wp_enqueue_script( 
+	// 	'gsapFlip', 
+	// 	get_template_directory_uri() . '/assets/js/Flip.min.js', 
+	// 	array('gsap'), 
+	// 	'3.12.5', 
+	// 	array( 
+	// 	  'strategy'  => 'defer',
+	// 	)
+	//   );
+
+	// Load Local GSAP SplitText
 	wp_enqueue_script( 
-		'gsapFlip', 
-		get_template_directory_uri() . '/assets/js/Flip.min.js', 
+		'gsapSplitText', 
+		get_template_directory_uri() . '/assets/js/SplitText.min.js', 
 		array('gsap'), 
 		'3.12.5', 
 		array( 

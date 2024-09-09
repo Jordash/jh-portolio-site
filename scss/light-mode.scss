@@ -54,15 +54,12 @@ body {
       color: $link-hover;
     } 
   }
-  h1.h1-current {
+  h1.h1-rotate {
     color: $h1-rotate-highlight;
     text-shadow: .5vw .5vw .1rem $h1-rotate-highlight-shadow;
     @media (min-width: 1000px) {
       text-shadow: .35rem .35rem .1rem $h1-rotate-highlight-shadow;
     }
-  }
-  h1.h1-rotate {
-    color: $h1-rotate-base;
   }
   h2 { 
     em {

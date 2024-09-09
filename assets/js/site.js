@@ -32,7 +32,8 @@ function toggleDarkMode() {
 
 //Register GSAP Plugins
 gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(Flip);
+gsap.registerPlugin(SplitText);
+// gsap.registerPlugin(Flip); //currently unused
 
 (function($) {
     $(document).ready(function(){
@@ -40,8 +41,73 @@ gsap.registerPlugin(Flip);
         const t1 = gsap.timeline();
         t1.from("#home-screens figure", { scale: 0, y: "-100vh", stagger: { amount: 0.5, from: "random" }, duration: .7 });
 
+        //Begin Animated Headline Swaps
+        // Transition based on Pete Barr's Swissted Radiohead pen: https://codepen.io/petebarr/pen/poJYPdN
+        select = e => document.querySelector(e);
+        selectAll = e => document.querySelectorAll(e);
+        const stage = select('.h1-rotate-group');
+        const headings = selectAll('.h1-rotate');
+
+        function animate(headline) {
+            let tl = gsap.timeline({
+                delay: 0.2,
+                repeat: 0
+            });
+            
+            gsap.set(headline, { autoAlpha: 1 });
+            
+            let headingST = new SplitText(headline, {type: "chars", charsClass: "headChar", position: "absolute" });
+    
+            gsap.set('.headChar', {
+                transformOrigin: "center center -200px"
+            });
+    
+            tl.from('.headChar', {
+                rotationX: 90,
+                y: -100,
+                stagger: 0.05,
+                duration: 4,
+                ease: 'elastic(1.8, 1.5)'
+            })
+            .to('.headChar', {
+                rotationX: "-=90",
+                y: -100,
+                stagger: 0.05,
+                duration: 1.5,
+                ease: 'expo.in',
+                autoAlpha: 0
+            }, "-=1.5")
+            return tl;
+        }
+    
+        function init() {
+            gsap.set(stage, { autoAlpha: 1 });
+    
+            let tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+            headings.forEach((head, index) => {
+                tl.add(animate(head), index * 6);
+            });
+        }
+        function resize() {
+            let vh = window.innerHeight;
+            let sh = stage.offsetHeight;
+            let scaleFactor = vh/sh;
+            if(scaleFactor < 1) {
+                gsap.set(stage, { scale: scaleFactor });
+            } else {
+                gsap.set(stage, { scale: 1 });
+            }
+        }
+    
+        window.onresize = resize;
+    
+        window.onload = () => {
+            init();
+            resize();
+        };
+
         //Begin GSAP House Spins       
-        const t2 = gsap.timeline({
+        const t3 = gsap.timeline({
             repeat: -1,
             scrollTrigger: {
                 trigger: "#website-cost",
@@ -54,14 +120,14 @@ gsap.registerPlugin(Flip);
 
         gsap.set(".house", { display: "block" });
 
-        t2.from(".small-house-spin", { x: "50vw", scale: 0.7, opacity: 0, duration: .7, ease: "power1.inOut" });
-        t2.to(".small-house-spin", { x: "-50vw", opacity: 0, duration: .7 }, "> 2");
+        t3.from(".small-house-spin", { x: "50vw", scale: 0.7, opacity: 0, duration: .7, ease: "power1.inOut" });
+        t3.to(".small-house-spin", { x: "-50vw", opacity: 0, duration: .7 }, "> 2");
 
-        t2.from(".medium-house-spin", { x: "50vw", scale: 0.7, opacity: 0, duration: .7, ease: "power4.out" }, ">-.5");
-        t2.to(".medium-house-spin", { x: "-50vw", opacity: 0, duration: .7 }, "> 2");
+        t3.from(".medium-house-spin", { x: "50vw", scale: 0.7, opacity: 0, duration: .7, ease: "power4.out" }, ">-.5");
+        t3.to(".medium-house-spin", { x: "-50vw", opacity: 0, duration: .7 }, "> 2");
 
-        t2.from(".large-house-spin", { x: "50vw", scale: 0.7, opacity: 0, duration: .7, ease: "power4.out" }, ">-.5");
-        t2.to(".large-house-spin", { x: "-50vw", opacity: 0, duration: .7 }, "> 1.5");
+        t3.from(".large-house-spin", { x: "50vw", scale: 0.7, opacity: 0, duration: .7, ease: "power4.out" }, ">-.5");
+        t3.to(".large-house-spin", { x: "-50vw", opacity: 0, duration: .7 }, "> 1.5");
 
         //Load Project CPTs in Modal with AJAX
         const trigger = $('.work-grid-image a');
