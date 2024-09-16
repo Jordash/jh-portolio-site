@@ -5,10 +5,9 @@
 *  - HEADER/NAV STYLES
 *  - HOME STYLES
 *  - TYPOGRAPHY
-*  - TOGGLE SWITCHES
 *  - TOGGLE COLUMNS
 *  - SCROLL-BASED CARD FLIPS 
-*  - SCROLL-BASED REVERSING COLUMNS
+*  - SKILL BLOCK COLUMNS
 *  - WORK GRID
 *  - WEBAWARDS SECTION
 *  - WEBSITE ESTIMATOR
@@ -18,17 +17,18 @@
 */
 /* Light Palette */
 /* Light Variables */
-/* */
-/* */
 body {
   background-color: #fff;
   color: black;
 }
 body a {
-  color: #707070;
+  color: #555555;
 }
 body a:hover {
   color: #9FC417;
+}
+body #jh-logo path, body #jh-logo rect {
+  fill: #16798d;
 }
 body h1.h1-rotate {
   color: #E6DF22;
@@ -39,14 +39,14 @@ body h1.h1-rotate {
     text-shadow: 0.35rem 0.35rem 0.1rem rgb(112, 112, 112);
   }
 }
-body h2 em {
-  color: #B1E019;
+body h2 em, body h3 em {
+  color: #7BA101;
   font-style: normal;
 }
 body .wp-block-button__link {
   background: linear-gradient(75deg, #E5DF23 0%, #ABE01A 100%);
   box-shadow: 5px 5px 2px 0px rgb(112, 112, 112);
-  color: #707070;
+  color: #555555;
   border-radius: 0.2rem;
 }
 body .wp-block-button__link:hover {
@@ -56,10 +56,7 @@ body .wp-block-button__link:hover {
 }
 body .wp-block-button__link.clicked { /* class added with JS */
   color: #fff !important;
-  background: #707070 !important;
-}
-body nav {
-  border-bottom: 1px solid #E0E0E0;
+  background: #555555 !important;
 }
 body #toggle-column-1 h3::before {
   color: #B1E019;
@@ -72,27 +69,34 @@ body #toggle-column-1 .flip-card-back {
   color: #0F5260;
   background: #CDE96E;
 }
+body #toggle-column-2 li {
+  color: #0F5260;
+  background-color: #CDE96E;
+}
 body #webawards {
-  background: linear-gradient(150deg, #F0F0F0 0%, #A0A0A0 100%);
+  background: linear-gradient(150deg, #F4F4F4 0%, #CBCBCB 100%);
+}
+body #webawards p {
+  color: #555555;
 }
 body #webawards h2 {
-  color: #707070;
+  color: #555555;
 }
 body #webawards h2 em {
-  color: #58C9E9;
+  color: #9a4609;
 }
 body #website-cost {
-  background: linear-gradient(75deg, #7EC4F3 0%, #206BC3 100%);
+  background: linear-gradient(75deg, #cee8fe 0%, #7EB0DD 100%);
   color: #000;
 }
 body #website-cost h2 {
-  color: #fff;
+  color: #000;
 }
 body #website-cost h2 em {
-  color: #F6DF02;
+  color: #1261be;
 }
 body #contact {
-  background: linear-gradient(75deg, #FFF8C4 0%, #ACE019 100%);
+  background: linear-gradient(75deg, #fffcea 0%, #ACE019 100%);
   color: #000;
 }
 body #contact h2 em {
@@ -111,28 +115,54 @@ body #contact .submit-wrap input[type=submit] {
   color: #fff;
   background: linear-gradient(180deg, #47CCEB 0%, #1F8AC3 100%);
 }
-body .nf-breadcrumbs li a {
-  color: #707070;
+body #contact .ninja-forms-field::-moz-placeholder {
+  color: #555555;
 }
-body .nf-breadcrumbs li a:hover {
+body #contact .nf-field-label > label, body #contact .ninja-forms-field::placeholder {
+  color: #555555;
+}
+body #contact .ninja-forms-field {
+  border-bottom: 1px solid #555555;
+}
+body .estimator .nf-breadcrumbs li a {
+  color: #555555;
+}
+body .estimator .nf-breadcrumbs li a:hover {
   color: #9FC417;
 }
-body .nf-breadcrumbs .active a {
+body .estimator .ninja-forms-field::-moz-placeholder {
+  color: #555555;
+}
+body .estimator .nf-field-label > label, body .estimator .ninja-forms-field::placeholder {
+  color: #555555;
+}
+body .estimator .ninja-forms-field {
+  border-bottom: 1px solid #555555;
+}
+body .estimator .nf-breadcrumbs .active a {
   color: #9FC417;
 }
-body .nf-next,
-body .nf-previous {
-  border: 1px solid #B1E019;
-  color: #707070;
+body .estimator .nf-next,
+body .estimator .nf-previous {
+  background: linear-gradient(75deg, #E5DF23 0%, #ABE01A 100%);
+  color: #555555;
 }
-body .calculate {
+body .estimator .nf-next:hover,
+body .estimator .nf-previous:hover {
+  color: #fff;
+  background: linear-gradient(75deg, #5ed428 0%, #24c9ce 100%);
+  transition: all 0.3s;
+}
+body .estimator .calculate {
   background: linear-gradient(75deg, #E5DF23 0%, #ABE01A 100%);
   box-shadow: 5px 5px 2px 0px rgb(112, 112, 112);
-  color: #707070;
+  color: #555555;
   border-radius: 0.2rem;
 }
-body .calculate:hover {
+body .estimator .calculate:hover {
   color: #fff;
+  background: linear-gradient(75deg, #5ed428 0%, #24c9ce 100%);
+  transition: all 0.3s;
 }
 body .thumb-highlight {
   outline: 4px solid #25c9cd;
@@ -174,6 +204,34 @@ body.dark-mode {
   background-color: #444444;
   color: white;
 }
+body.dark-mode a {
+  color: #E0E0E0;
+}
+body.dark-mode a:hover {
+  color: #B1E019;
+}
+body.dark-mode #jh-logo path, body.dark-mode #jh-logo rect {
+  fill: #20a8c3;
+}
+body.dark-mode h2 em, body.dark-mode h3 em {
+  color: #B1E019;
+  font-style: normal;
+}
+body.dark-mode .wp-block-button__link {
+  background: linear-gradient(75deg, #E5DF23 0%, #ABE01A 100%);
+  box-shadow: 5px 5px 2px 0px rgb(112, 112, 112);
+  color: #555555;
+  border-radius: 0.2rem;
+}
+body.dark-mode .wp-block-button__link:hover {
+  color: #fff;
+  background: linear-gradient(75deg, #5ed428 0%, #24c9ce 100%);
+  transition: all ease 0.5s;
+}
+body.dark-mode .wp-block-button__link.clicked { /* class added with JS */
+  color: #fff !important;
+  background: #707070 !important;
+}
 body.dark-mode #toggle-column-1 h3::before {
   color: #B1E019;
 }
@@ -185,8 +243,16 @@ body.dark-mode #toggle-column-1 .flip-card-back {
   color: #B1E019;
   background: black;
 }
+body.dark-mode #toggle-column-2 { /* Skills Cards */ }
+body.dark-mode #toggle-column-2 li {
+  color: #B1E018;
+  background-color: black;
+}
 body.dark-mode #webawards {
   background: linear-gradient(75deg, #9A3009 0%, #D17200 100%);
+}
+body.dark-mode #webawards p {
+  color: #fff;
 }
 body.dark-mode #webawards h2 {
   color: #fff;
@@ -206,49 +272,72 @@ body.dark-mode #website-cost h2 em {
 }
 body.dark-mode #contact {
   background: linear-gradient(75deg, #707070 0%, #000 100%);
-  color: pink;
+  color: #ddd;
 }
 body.dark-mode #contact h2 em {
-  color: pink;
+  color: #7FD2DD;
 }
 body.dark-mode #contact .wp-social-link {
   background: unset;
 }
 body.dark-mode #contact .wp-social-link a {
-  color: pink;
+  color: #7FD2DD;
 }
 body.dark-mode #contact .wp-social-link a:hover {
-  color: pink;
+  color: #C31FA3;
 }
 body.dark-mode #contact .submit-wrap input[type=submit] {
   color: #fff;
-  background: linear-gradient(180deg, #47CCEB 0%, #1F8AC3 100%);
+  background: linear-gradient(180deg, #7FD2DD 0%, #0A648D 100%);
 }
-body.dark-mode nav {
-  border-bottom: 1px solid #8b8989;
+body.dark-mode #contact .ninja-forms-field::-moz-placeholder {
+  color: #c3c3c3;
 }
-body.dark-mode .nf-breadcrumbs li a {
+body.dark-mode #contact .nf-field-label > label, body.dark-mode #contact .ninja-forms-field::placeholder {
+  color: #c3c3c3;
+}
+body.dark-mode #contact .ninja-forms-field {
+  border-bottom: 1px solid white;
+}
+body.dark-mode .estimator .nf-breadcrumbs li a {
   color: #707070;
 }
-body.dark-mode .nf-breadcrumbs li a:hover {
+body.dark-mode .estimator .nf-breadcrumbs li a:hover {
   color: #B1E019;
 }
-body.dark-mode .nf-breadcrumbs .active a {
+body.dark-mode .estimator .ninja-forms-field::-moz-placeholder {
+  color: #c3c3c3;
+}
+body.dark-mode .estimator .nf-field-label > label, body.dark-mode .estimator .ninja-forms-field::placeholder {
+  color: #c3c3c3;
+}
+body.dark-mode .estimator .ninja-forms-field {
+  border-bottom: 1px solid white;
+}
+body.dark-mode .estimator .nf-breadcrumbs .active a {
   color: #B1E019;
 }
-body.dark-mode .nf-next,
-body.dark-mode .nf-previous {
-  border: 1px solid #B1E019;
+body.dark-mode .estimator .nf-next,
+body.dark-mode .estimator .nf-previous {
+  background: linear-gradient(75deg, #E5DF23 0%, #ABE01A 100%);
   color: #707070;
 }
-body.dark-mode .calculate {
+body.dark-mode .estimator .nf-next:hover,
+body.dark-mode .estimator .nf-previous:hover {
+  color: #fff;
+  background: linear-gradient(75deg, #5ed428 0%, #24c9ce 100%);
+  transition: all 0.3s;
+}
+body.dark-mode .estimator .calculate {
   background: linear-gradient(75deg, #E5DF23 0%, #ABE01A 100%);
   box-shadow: 5px 5px 2px 0px rgb(112, 112, 112);
-  color: #C3C3C3;
+  color: black;
   border-radius: 0.2rem;
 }
-body.dark-mode .calculate:hover {
+body.dark-mode .estimator .calculate:hover {
   color: #fff;
+  background: linear-gradient(75deg, #5ed428 0%, #24c9ce 100%);
+  transition: all 0.3s;
 }
 body.dark-mode .thumb-highlight {
   outline: 4px solid #25c9cd;
@@ -298,7 +387,7 @@ body.dark-mode #outer-modal .inner-modal .project-footer a:hover {
   height: auto;
 }
 #jh-logo path, #jh-logo rect {
-  fill: #707070; /* move to light/dark css */
+  fill: #707070;
 }
 
 /* Remove default button styles */
@@ -313,6 +402,7 @@ body {
   font-size: 16px;
   line-height: 1.2;
   color: #707070;
+  overflow-x: clip;
 }
 
 .entry-content > .alignfull {
@@ -361,6 +451,11 @@ body {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+}
+
+video {
+  max-width: 100%;
+  height: auto;
 }
 
 /********************************* 
@@ -654,140 +749,11 @@ nav {
 * END: TYPOGRAPHY                *
 *********************************/
 /********************************* 
-* BEGIN: TOGGLE SWITCHES         *
-*********************************/
-/* 
-* Toggle Swtich based on: https://github.com/NadeeshaEranjan 
-*/
-.toggle-container {
-  display: flex;
-  padding: 2rem;
-  align-items: center;
-}
-
-div.btn-container {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  margin: 2rem auto;
-}
-
-label {
-  font-size: 1rem;
-  color: #707070;
-  font-weight: 500;
-}
-
-.btn-color-mode-switch {
-  display: inline-block;
-  margin: 0px;
-  position: relative;
-}
-
-.btn-color-mode-switch > label.btn-color-mode-switch-inner {
-  margin: 0px;
-  width: 200px;
-  height: 2.5rem;
-  background: #E0E0E0;
-  border-radius: 26px;
-  overflow: hidden;
-  position: relative;
-  transition: all 0.3s ease;
-  box-shadow: 0px 0px 8px 0px rgba(17, 17, 17, 0.34) inset;
-  display: block;
-}
-
-.btn-color-mode-switch > label.btn-color-mode-switch-inner:before {
-  content: attr(data-on);
-  position: absolute;
-  font-size: 1rem;
-  font-weight: 500;
-  top: 0rem;
-  right: 20px;
-  display: flex;
-  align-items: center;
-  align-content: center;
-  line-height: 100%;
-  height: 100%;
-}
-
-.btn-color-mode-switch > label.btn-color-mode-switch-inner:after {
-  content: attr(data-off);
-  width: 50%;
-  height: 100%;
-  cursor: pointer;
-  background: #fff;
-  border-radius: 26px;
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  text-align: center;
-  transition: all 0.3s ease;
-  box-shadow: 0px 0px 6px -2px #111;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.btn-color-mode-switch input[type=checkbox] {
-  cursor: pointer;
-  width: 50px;
-  height: 25px;
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  z-index: 1;
-  margin: 0px;
-}
-
-.btn-color-mode-switch input[type=checkbox]:checked + label.btn-color-mode-switch-inner:after {
-  content: attr(data-on);
-  left: 50%;
-}
-
-.btn-color-mode-switch input[type=checkbox]:checked + label.btn-color-mode-switch-inner:before {
-  content: attr(data-off);
-  left: 20px;
-}
-
-/* Switch to Col 2 */
-body:has(input[type=checkbox]:checked) #toggle-column-2 {
-  opacity: 1;
-  transition: all 0.3s ease;
-  height: auto;
-}
-
-body:has(input[type=checkbox]:checked) #toggle-column-1 {
-  opacity: 0;
-  transition: all 0.3s ease;
-  height: 0;
-}
-
-/* Switch back to Col 1 */
-body:not(:has(input[type=checkbox]:checked)) #toggle-column-2 {
-  opacity: 0;
-  transition: all 0.3s ease;
-  height: 0;
-}
-
-body:not(:has(input[type=checkbox]:checked)) #toggle-column-1 {
-  opacity: 1;
-  transition: all 0.3s ease;
-  height: auto;
-}
-
-/********************************* 
-* END: TOGGLE SWITCHES           *
-*********************************/
-/********************************* 
 * BEGIN: TOGGLE COLUMNS          *
 *********************************/
 /*
 * Toggle Columns
 */
-#toggle-column-1 {
-  opacity: 1;
-}
 #toggle-column-1 .wp-block-column {
   min-height: 500px;
   display: flex;
@@ -795,8 +761,9 @@ body:not(:has(input[type=checkbox]:checked)) #toggle-column-1 {
 }
 
 #toggle-column-2 {
-  opacity: 0;
-  height: 0;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /********************************* 
@@ -974,7 +941,7 @@ body:not(:has(input[type=checkbox]:checked)) #toggle-column-1 {
 * END: SCROLL-BASED CARD FLIPS   *
 *********************************/
 /*********************************
-* BEGIN: SCROLL-BASED REV COLUMNS*
+* BEGIN: SKILL BLOCK COLUMNS     *
 *********************************/
 #toggle-column-2 h3 {
   width: 100%;
@@ -987,7 +954,6 @@ body:not(:has(input[type=checkbox]:checked)) #toggle-column-1 {
   position: relative;
 }
 #toggle-column-2 .columns .column {
-  border: 1px solid salmon;
   display: flex;
   flex-direction: column;
 }
@@ -996,8 +962,6 @@ body:not(:has(input[type=checkbox]:checked)) #toggle-column-1 {
   padding-left: 0;
 }
 #toggle-column-2 .columns .column ul li {
-  color: blue; /* move to light/dark css */
-  background-color: #ccc; /* move to light/dark css*/
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -1009,8 +973,8 @@ body:not(:has(input[type=checkbox]:checked)) #toggle-column-1 {
   font-weight: 500;
   line-height: 1.1;
   margin: 1.5rem 0;
-  border-radius: 1rem;
-  min-height: 200px;
+  border-radius: 1.2rem;
+  min-height: 150px;
 }
 #toggle-column-2 .columns .column ul li:first-child {
   margin-top: 0;
@@ -1024,27 +988,9 @@ body:not(:has(input[type=checkbox]:checked)) #toggle-column-1 {
   display: block;
   width: 100%;
 }
-#toggle-column-2 .columns .column-reverse {
-  transform: translateY(calc(-100% + 100vh));
-  flex-direction: column-reverse;
-  animation: adjust-position linear forwards;
-  animation-timeline: scroll(root block);
-}
-@keyframes adjust-position {
-  /* Start position: shift column up, but in view */
-  from {
-    opacity: 0.2;
-    transform: translateY(calc(-100% + 100vh));
-  }
-  /* End position: shift column down, but in view */
-  to {
-    opacity: 1;
-    transform: translateY(calc(100% - 100vh));
-  }
-}
 
 /*********************************
-* END: SCROLL-BASED REV COLUMNS  *
+* END: SKILL BLOCK COLUMNS       *
 *********************************/
 /********************************* 
 * BEGIN: WORK GRID               *
@@ -1294,17 +1240,14 @@ body:not(:has(input[type=checkbox]:checked)) #toggle-column-1 {
 
 .ninja-forms-field {
   border: none;
-  border-bottom: 1px solid black; /* move to light/dark css */
   padding: 0.3rem;
   font-size: 1rem;
 }
 .ninja-forms-field:focus {
-  background-color: #fff; /* move to light/dark css */
   transition: all 0.3s linear;
 }
 
 textarea.ninja-forms-field {
-  border: 1px solid black; /* move to light/dark css */
   font-family: "IBM Plex", sans-serif;
 }
 
@@ -1312,18 +1255,20 @@ textarea.ninja-forms-field {
   background: none;
 }
 
-.nf-form-cont .field-wrap:has(input:focus) label {
+.nf-form-cont .field-wrap:has(input:focus) label,
+.nf-form-cont .field-wrap:has(textarea:focus) label {
   opacity: 1;
   transition: all 0.3s ease-out;
 }
 
-.nf-form-cont .field-wrap:has(input:focus) input::-moz-placeholder {
+.nf-form-cont .field-wrap:has(input:focus) input::-moz-placeholder, .nf-form-cont .field-wrap:has(textarea:focus) textarea::-moz-placeholder {
   opacity: 0;
   -moz-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
 
-.nf-form-cont .field-wrap:has(input:focus) input::placeholder {
+.nf-form-cont .field-wrap:has(input:focus) input::placeholder,
+.nf-form-cont .field-wrap:has(textarea:focus) textarea::placeholder {
   opacity: 0;
   transition: all 0.3s ease-out;
 }

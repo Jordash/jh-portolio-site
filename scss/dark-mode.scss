@@ -1,4 +1,5 @@
 /* Dark Variables */
+$logo-color: #20a8c3;
 $dkgray: #707070;
 $ltgray: #E0E0E0;
 $nav-border: #8b8989;
@@ -14,10 +15,14 @@ $h1-rotate-highlight-shadow: #585858;
 $button-gradient: linear-gradient(75deg, #E5DF23 0%, #ABE01A 100%);
 $button-shadow: rgba(112, 112, 112, 1);
 $button-hover-text: #fff;
+$button-gradient-hover: linear-gradient(75deg, #5ed428 0%, #24c9ce 100% );
 //Services Section
 $flip-card-front: $dkgray;
 $flip-card-back: black;
 $flip-card-content: #B1E018;
+//Skills Section
+$skill-block-content: #B1E018;
+$skill-block-background: black;
 //WebAward Section
 $webaward-bg-gradient: linear-gradient(75deg, #9A3009 0%, #D17200 100%);
 $webaward-base-type: #fff;
@@ -28,15 +33,15 @@ $cost-heading-highlight: #F5DF02;
 $cost-type: #fff;
 $cost-bg-gradient: linear-gradient(75deg, #69A4AC 0%,#045260 100%);
 //Contact Section
-$contact-type-base: pink;
-$contact-type-highlight: pink;
-$contact-link-base: pink;
-$contact-link-hover: pink;
-$conact-button-gradient: linear-gradient(180deg, #7FD2DD 0%, #0A648D 100%);
+$contact-type-base: #ddd;
+$contact-type-highlight: #7FD2DD;
+$contact-link-base: #7FD2DD;
+$contact-link-hover: #C31FA3;
+$contact-button-gradient: linear-gradient(180deg, #7FD2DD 0%, #0A648D 100%);
 $contact-button-type: #fff;
 $contact-bg-gradient: linear-gradient(75deg, #707070 0%, #000 100%);
-$contact-field-label: $dkgray;
-$contact-field-border: pink;
+$contact-field-label: #c3c3c3;
+$contact-field-border: white;
 //Work Thumbs
 $thumb-highlight: #25c9cd;
 //Project Modal
@@ -47,6 +52,38 @@ $modal-body-text: #fff;
 body.dark-mode {
   background-color: $background;
   color: white;
+  a { 
+    color: $link-base;
+    &:hover{
+      color: $link-hover;
+    } 
+  }
+  #jh-logo {
+    path, rect {
+      fill: $logo-color;
+    }
+  }
+  h2, h3 { 
+    em {
+      color: $type-highlight;
+      font-style: normal;
+    } 
+  }
+  .wp-block-button__link {
+    background: $button-gradient;
+    box-shadow: 5px 5px 2px 0px $button-shadow;
+    color: #555555;
+    border-radius: .2rem;
+    &:hover {
+      color: $button-hover-text;
+      background:$button-gradient-hover; 
+      transition: all ease .5s;
+    }
+    &.clicked { /* class added with JS */
+      color: #fff !important;
+      background: $dkgray !important; 
+    }
+  }
   #toggle-column-1 {
     h3 {
       &::before {
@@ -62,8 +99,17 @@ body.dark-mode {
       background: $flip-card-back
     }
   }
+  #toggle-column-2 { /* Skills Cards */
+    li {
+      color: $skill-block-content;
+      background-color: $skill-block-background;
+    }
+  }
   #webawards {
     background: $webaward-bg-gradient;
+    p {
+      color: #fff;
+    }
     h2 {
       color: $webaward-base-type;
       em {
@@ -102,43 +148,59 @@ body.dark-mode {
       color: $contact-button-type;
       background: $contact-button-gradient;
     }
-  }
-  nav {
-    border-bottom: 1px solid $nav-border;
+    .nf-field-label > label, .ninja-forms-field::placeholder {
+      color: $contact-field-label;
+    }
+    .ninja-forms-field {
+      border-bottom: 1px solid $contact-field-border;
+    }
   }
 
   //Estimator
-  .nf-breadcrumbs {
-    li {
-      a {
-        color: $dkgray;
-        &:hover {
+  .estimator {
+    .nf-breadcrumbs {
+      li {
+        a {
+          color: $dkgray;
+          &:hover {
+            color: $link-hover;
+          }
+        }
+      }
+    }
+    .nf-field-label > label, .ninja-forms-field::placeholder {
+      color: $contact-field-label;
+    }
+    .ninja-forms-field {
+      border-bottom: 1px solid $contact-field-border;
+    }
+    .nf-breadcrumbs {
+      .active {
+        a {
           color: $link-hover;
         }
       }
     }
-  }
-
-  .nf-breadcrumbs {
-    .active {
-      a {
-        color: $link-hover;
+    .nf-next,
+    .nf-previous {
+      background: $button-gradient;
+      color: $dkgray; 
+      &:hover {
+        color: $button-hover-text;
+        background: $button-gradient-hover;
+        transition: all .3s;
       }
     }
-  }
-
-  .nf-next,
-  .nf-previous {
-    border: 1px solid $icon-color;
-    color: $dkgray; 
-  }
-  .calculate {
-    background: $button-gradient;
-    box-shadow: 5px 5px 2px 0px $button-shadow;
-    color: $type-base;
-    border-radius: .2rem;
-    &:hover {
-      color: $button-hover-text;
+    .calculate {
+      background: $button-gradient;
+      box-shadow: 5px 5px 2px 0px $button-shadow;
+      color: black;
+      border-radius: .2rem;
+      &:hover {
+        color: $button-hover-text;
+        background: $button-gradient-hover;
+        transition: all .3s;
+      }
     }
   }
   //Work Thumb Selection

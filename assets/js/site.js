@@ -41,70 +41,74 @@ gsap.registerPlugin(SplitText);
         const t1 = gsap.timeline();
         t1.from("#home-screens figure", { scale: 0, y: "-100vh", stagger: { amount: 0.5, from: "random" }, duration: .7 });
 
-        //Begin Animated Headline Swaps
-        // Transition based on Pete Barr's Swissted Radiohead pen: https://codepen.io/petebarr/pen/poJYPdN
-        select = e => document.querySelector(e);
-        selectAll = e => document.querySelectorAll(e);
-        const stage = select('.h1-rotate-group');
-        const headings = selectAll('.h1-rotate');
+        //ONly Run if on homepage
+        if ( window.location.pathname == '/' ){
+            
+            //Begin Animated Headline Swaps
+            // Transition based on Pete Barr's Swissted Radiohead pen: https://codepen.io/petebarr/pen/poJYPdN
+            select = e => document.querySelector(e);
+            selectAll = e => document.querySelectorAll(e);
+            const stage = select('.h1-rotate-group');
+            const headings = selectAll('.h1-rotate');
 
-        function animate(headline) {
-            let tl = gsap.timeline({
-                delay: 0.2,
-                repeat: 0
-            });
-            
-            gsap.set(headline, { autoAlpha: 1 });
-            
-            let headingST = new SplitText(headline, {type: "chars", charsClass: "headChar", position: "absolute" });
-    
-            gsap.set('.headChar', {
-                transformOrigin: "center center -200px"
-            });
-    
-            tl.from('.headChar', {
-                rotationX: 90,
-                y: -100,
-                stagger: 0.05,
-                duration: 4,
-                ease: 'elastic(1.8, 1.5)'
-            })
-            .to('.headChar', {
-                rotationX: "-=90",
-                y: -100,
-                stagger: 0.05,
-                duration: 1.5,
-                ease: 'expo.in',
-                autoAlpha: 0
-            }, "-=1.5")
-            return tl;
-        }
-    
-        function init() {
-            gsap.set(stage, { autoAlpha: 1 });
-    
-            let tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
-            headings.forEach((head, index) => {
-                tl.add(animate(head), index * 6);
-            });
-        }
-        function resize() {
-            let vh = window.innerHeight;
-            let sh = stage.offsetHeight;
-            let scaleFactor = vh/sh;
-            if(scaleFactor < 1) {
-                gsap.set(stage, { scale: scaleFactor });
-            } else {
-                gsap.set(stage, { scale: 1 });
+            function animate(headline) {
+                let tl = gsap.timeline({
+                    delay: 0.2,
+                    repeat: 0
+                });
+                
+                gsap.set(headline, { autoAlpha: 1 });
+                
+                let headingST = new SplitText(headline, {type: "chars,words", charsClass: "headChar", position: "relative" });
+        
+                gsap.set('.headChar', {
+                    transformOrigin: "center center -200px"
+                });
+        
+                tl.from('.headChar', {
+                    rotationX: 90,
+                    y: -100,
+                    stagger: 0.05,
+                    duration: 4,
+                    ease: 'elastic(1.8, 1.5)'
+                })
+                .to('.headChar', {
+                    rotationX: "-=90",
+                    y: -100,
+                    stagger: 0.05,
+                    duration: 1.5,
+                    ease: 'expo.in',
+                    autoAlpha: 0
+                }, "-=1.5")
+                return tl;
             }
+    
+            function init() {
+                gsap.set(stage, { autoAlpha: 1 });
+        
+                let tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+                headings.forEach((head, index) => {
+                    tl.add(animate(head), index * 6);
+                });
+            }
+            function resize() {
+                let vh = window.innerHeight;
+                let sh = stage.offsetHeight;
+                let scaleFactor = vh/sh;
+                if(scaleFactor < 1) {
+                    gsap.set(stage, { scale: scaleFactor });
+                } else {
+                    gsap.set(stage, { scale: 1 });
+                }
+            }
+    
+            window.onresize = resize;
+        
+            window.onload = () => {
+                init();
+                resize();
+            };
         }
-    
-        window.onresize = resize;
-    
-        window.onload = () => {
-            init();
-            resize();
-        };
 
         //Begin GSAP House Spins       
         const t3 = gsap.timeline({
@@ -240,5 +244,34 @@ gsap.registerPlugin(SplitText);
                 $('.' + sort + ' a').addClass('clicked');
             }
         }
+
+        //Animate skill blocks on Skills Tab
+        const skill_block = gsap.utils.toArray("#toggle-column-2 .column li");
+        skill_block.forEach((skill) => {
+        gsap.fromTo(
+            skill,
+            {
+                opacity: 0,
+                y: -50,
+                scale: 0.5,
+            },
+            {
+                scale: .9,
+                y: 0,
+                opacity: 1,
+                stagger: 1.25,
+                ease: "back",
+                duration: 1.75,
+                scrollTrigger: {
+                    start: "top 90%",
+                    scrub: true,
+                    end: "top top",
+                    trigger: skill,
+                    markers: false,
+                    toggleActions: "play none reverse reset",
+                },
+            }
+        );
+        });
     });
 }(jQuery));

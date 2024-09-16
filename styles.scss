@@ -5,10 +5,9 @@
 *  - HEADER/NAV STYLES
 *  - HOME STYLES
 *  - TYPOGRAPHY
-*  - TOGGLE SWITCHES
 *  - TOGGLE COLUMNS
 *  - SCROLL-BASED CARD FLIPS 
-*  - SCROLL-BASED REVERSING COLUMNS
+*  - SKILL BLOCK COLUMNS
 *  - WORK GRID
 *  - WEBAWARDS SECTION
 *  - WEBSITE ESTIMATOR
@@ -61,7 +60,7 @@
   width: 25px;
   height: auto;
   path, rect {
-    fill: $dkgray; /* move to light/dark css */
+    fill: $dkgray;
   }
 }
 
@@ -77,6 +76,7 @@ body {
   font-size: 16px;
   line-height: 1.2;
   color: $dkgray;
+  overflow-x: clip;
 }
 .entry-content > .alignfull { 
   width: calc(100% + 2rem);
@@ -122,6 +122,8 @@ body {
 .max-width-col-1200 {
   @include max-width-container;
 }
+
+video { max-width: 100%; height: auto; }
 
 /********************************* 
 * END: GENERAL SITE STYLES       *
@@ -431,132 +433,7 @@ nav {
 
 
 
-/********************************* 
-* BEGIN: TOGGLE SWITCHES         *
-*********************************/
 
-/* 
-* Toggle Swtich based on: https://github.com/NadeeshaEranjan 
-*/
-.toggle-container {
-    display: flex;
-    padding: 2rem;
-    align-items: center;
-}
-div.btn-container{
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-    margin: 2rem auto;
-}
-
-label {
-    font-size: 1rem;
-    color: $dkgray;
-    font-weight: 500;
-}
-
-.btn-color-mode-switch {
-    display: inline-block;
-    margin: 0px;
-    position: relative;
-}
-
-.btn-color-mode-switch > label.btn-color-mode-switch-inner{
-    margin: 0px;
-    width: 200px;
-    height: 2.5rem;
-    background: #E0E0E0;
-    border-radius: 26px;
-    overflow: hidden;
-    position: relative;
-    transition: all 0.3s ease;
-    box-shadow: 0px 0px 8px 0px rgba(17, 17, 17, 0.34) inset;
-    display: block;
-}
-
-.btn-color-mode-switch > label.btn-color-mode-switch-inner:before{
-    content: attr(data-on);
-    position: absolute;
-    font-size: 1rem;
-    font-weight: 500;
-    top: 0rem;
-    right: 20px;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    line-height: 100%;
-    height: 100%;
-}
-
-.btn-color-mode-switch > label.btn-color-mode-switch-inner:after{
-    content: attr(data-off);
-    width: 50%;
-    height: 100%;
-    cursor: pointer;
-    background: #fff;
-    border-radius: 26px;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0px 0px 6px -2px #111;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.btn-color-mode-switch input[type="checkbox"]{
-    cursor: pointer;
-    width: 50px;
-    height: 25px;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    z-index: 1;
-    margin: 0px;
-}
-
-.btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner:after{
-    content: attr(data-on);
-    left: 50%;
-}
-
-.btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner:before{
-    content: attr(data-off);
-    left: 20px;
-}
-
-
-
-/* Switch to Col 2 */
-body:has( input[type="checkbox"]:checked) #toggle-column-2 {
-    opacity: 1;
-    transition: all .3s ease;
-    height: auto;
-}
-body:has( input[type="checkbox"]:checked) #toggle-column-1 {
-    opacity: 0;
-    transition: all .3s ease;
-    height: 0;
-}
-
-/* Switch back to Col 1 */
-body:not(:has(input[type="checkbox"]:checked)) #toggle-column-2 {
-    opacity: 0;
-    transition: all .3s ease;
-    height: 0;
-}
-body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
-  opacity: 1;
-  transition: all .3s ease;
-  height: auto;
-}
-
-/********************************* 
-* END: TOGGLE SWITCHES           *
-*********************************/
 
 /********************************* 
 * BEGIN: TOGGLE COLUMNS          *
@@ -565,7 +442,6 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
 * Toggle Columns
 */
 #toggle-column-1 {
-  opacity: 1;
   .wp-block-column {
     min-height: 500px;
     display: flex;
@@ -574,8 +450,9 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
 }
 
 #toggle-column-2 {
-  opacity: 0;
-  height: 0;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /********************************* 
@@ -687,7 +564,7 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
 *********************************/
 
 /*********************************
-* BEGIN: SCROLL-BASED REV COLUMNS*
+* BEGIN: SKILL BLOCK COLUMNS     *
 *********************************/
 
 #toggle-column-2 {
@@ -701,15 +578,12 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
     overflow-y: hidden;
     position: relative;
     .column {
-      border: 1px solid salmon;
       display: flex;
       flex-direction: column;
       ul {
         list-style: none;
         padding-left: 0;
         li {
-          color: blue; /* move to light/dark css */
-          background-color: #ccc; /* move to light/dark css*/
           display: flex;
           flex-wrap: wrap;
           align-items: center;
@@ -721,8 +595,8 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
           font-weight: 500;
           line-height: 1.1;
           margin: 1.5rem 0;
-          border-radius: 1rem;
-          min-height: 200px;
+          border-radius: 1.2rem;
+          min-height: 150px;
           &:first-child { margin-top: 0; }
           &:last-child { margin-bottom: 0; }
           em {
@@ -734,33 +608,11 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
         }
       }
     }
-    //Shift column up (-100%), but keep in view (100vh)
-    .column-reverse {
-      transform: translateY(calc(-100% + 100vh));
-      flex-direction: column-reverse;
-      //Hook Animation To Reverse Columns On Scroll
-      animation: adjust-position linear forwards;
-      animation-timeline: scroll(root block);
-    }
-  }
-  //Reversing Columns Animation
-  @keyframes adjust-position {
-    /* Start position: shift column up, but in view */
-    from {
-      opacity: .2;
-      transform: translateY(calc(-100% + 100vh));
-    }
-    /* End position: shift column down, but in view */
-    to {
-      opacity: 1;
-      transform: translateY(calc(100% - 100vh));
-    }
   }
 }
 
-
 /*********************************
-* END: SCROLL-BASED REV COLUMNS  *
+* END: SKILL BLOCK COLUMNS       *
 *********************************/
 
 
@@ -1008,26 +860,25 @@ body:not(:has(input[type="checkbox"]:checked)) #toggle-column-1 {
 
 .ninja-forms-field {
   border: none;
-  border-bottom: 1px solid black; /* move to light/dark css */
   padding: .3rem;
   &:focus {
-    background-color: #fff; /* move to light/dark css */
     transition: all .3s linear;
   }
   font-size: 1rem;
 }
 textarea.ninja-forms-field {
-  border: 1px solid black; /* move to light/dark css */
   font-family: 'IBM Plex', sans-serif;
 }
 .ninja-forms-field:not(.calculate) {
   background: none;
 }
-.nf-form-cont .field-wrap:has(input:focus) label {
+.nf-form-cont .field-wrap:has(input:focus) label,
+.nf-form-cont .field-wrap:has(textarea:focus) label {
   opacity: 1;
   transition: all .3s ease-out;
 }
-.nf-form-cont .field-wrap:has(input:focus) input::placeholder {
+.nf-form-cont .field-wrap:has(input:focus) input::placeholder,
+.nf-form-cont .field-wrap:has(textarea:focus) textarea::placeholder {
   opacity: 0;
   transition: all .3s ease-out;
 }
