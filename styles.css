@@ -123,6 +123,7 @@ body #contact .nf-field-label > label, body #contact .ninja-forms-field::placeho
 }
 body #contact .ninja-forms-field {
   border-bottom: 1px solid #555555;
+  color: black;
 }
 body .estimator .nf-breadcrumbs li a {
   color: #555555;
@@ -138,6 +139,7 @@ body .estimator .nf-field-label > label, body .estimator .ninja-forms-field::pla
 }
 body .estimator .ninja-forms-field {
   border-bottom: 1px solid #555555;
+  color: black;
 }
 body .estimator .nf-breadcrumbs .active a {
   color: #9FC417;
@@ -298,6 +300,7 @@ body.dark-mode #contact .nf-field-label > label, body.dark-mode #contact .ninja-
 }
 body.dark-mode #contact .ninja-forms-field {
   border-bottom: 1px solid white;
+  color: white;
 }
 body.dark-mode .estimator .nf-breadcrumbs li a {
   color: #707070;
@@ -313,6 +316,7 @@ body.dark-mode .estimator .nf-field-label > label, body.dark-mode .estimator .ni
 }
 body.dark-mode .estimator .ninja-forms-field {
   border-bottom: 1px solid white;
+  color: white;
 }
 body.dark-mode .estimator .nf-breadcrumbs .active a {
   color: #B1E019;
@@ -755,9 +759,19 @@ nav {
 * Toggle Columns
 */
 #toggle-column-1 .wp-block-column {
-  min-height: 500px;
   display: flex;
   align-items: center;
+}
+#toggle-column-1 .wp-block-column:first-of-type {
+  min-height: auto;
+}
+#toggle-column-1 .wp-block-column:last-of-type {
+  min-height: 300px;
+}
+@media screen and (min-width: 782px) {
+  #toggle-column-1 .wp-block-column {
+    min-height: 500px;
+  }
 }
 
 #toggle-column-2 {
@@ -948,8 +962,7 @@ nav {
 }
 #toggle-column-2 .columns {
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   overflow-y: hidden;
   position: relative;
 }
@@ -987,6 +1000,17 @@ nav {
   font-size: 1rem;
   display: block;
   width: 100%;
+}
+@media screen and (min-width: 500px) {
+  #toggle-column-2 .columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 700px) {
+  #toggle-column-2 .columns {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /*********************************
@@ -1281,6 +1305,10 @@ textarea.ninja-forms-field {
 }
 
 /* Only for Estimator Form */
+.scope-counter {
+  display: none;
+}
+
 /* Animated Gradient Progress Bar */
 .nf-progress {
   background: linear-gradient(270deg, #e5df23, #009ef7);

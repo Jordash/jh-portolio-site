@@ -443,9 +443,19 @@ nav {
 */
 #toggle-column-1 {
   .wp-block-column {
-    min-height: 500px;
     display: flex;
     align-items: center;
+    &:first-of-type {
+      min-height: auto;
+    }
+    &:last-of-type {
+      min-height: 300px;
+    }
+  }
+  @media screen and ( min-width: 782px ) {
+    .wp-block-column {
+      min-height: 500px;
+    }
   }
 }
 
@@ -573,8 +583,7 @@ nav {
   }
   .columns {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     overflow-y: hidden;
     position: relative;
     .column {
@@ -608,6 +617,18 @@ nav {
         }
       }
     }
+  }
+  @media screen and (min-width: 500px) {
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+  }
+  @media screen and (min-width: 700px) {
+    .columns {
+      grid-template-columns: repeat(3, 1fr);
+    } 
   }
 }
 
@@ -890,6 +911,11 @@ textarea.ninja-forms-field {
 }
 
 /* Only for Estimator Form */
+.scope-counter {
+  //shows cumulative total while progressing through fields
+  //only necessary for testing
+  display: none;
+}
 /* Animated Gradient Progress Bar */
 .nf-progress {
   background: linear-gradient(270deg, #e5df23, #009ef7);
