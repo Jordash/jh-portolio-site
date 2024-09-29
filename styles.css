@@ -7,7 +7,7 @@
 *  - TYPOGRAPHY
 *  - TOGGLE COLUMNS
 *  - SCROLL-BASED CARD FLIPS 
-*  - SKILL BLOCK COLUMNS
+*  - SKILL BLOCKS
 *  - WORK GRID
 *  - WEBAWARDS SECTION
 *  - WEBSITE ESTIMATOR
@@ -27,8 +27,11 @@ body a {
 body a:hover {
   color: #9FC417;
 }
+body .wp-block-navigation .wp-block-navigation-item__content.wp-block-navigation-item__content:hover {
+  color: #9FC417;
+}
 body #jh-logo path, body #jh-logo rect {
-  fill: #16798d;
+  fill: #707070;
 }
 body h1.h1-rotate {
   color: #E6DF22;
@@ -95,6 +98,17 @@ body #website-cost h2 {
 body #website-cost h2 em {
   color: #1261be;
 }
+body #website-cost .wp-block-button__link {
+  background: linear-gradient(75deg, #E5DF23 0%, #ABE01A 100%);
+  box-shadow: 5px 5px 2px 0px rgb(112, 112, 112);
+  color: #fff;
+  background: linear-gradient(180deg, #44C6E7 0%, #206DC4 100%);
+}
+body #website-cost .wp-block-button__link:hover {
+  color: #fff;
+  background: linear-gradient(75deg, #5ed428 0%, #24c9ce 100%);
+  transition: all ease 0.5s;
+}
 body #contact {
   background: linear-gradient(75deg, #fffcea 0%, #ACE019 100%);
   color: #000;
@@ -125,6 +139,9 @@ body #contact .ninja-forms-field {
   border-bottom: 1px solid #555555;
   color: black;
 }
+body #contact textarea.ninja-forms-field {
+  border: 1px solid #555555;
+}
 body .estimator .nf-breadcrumbs li a {
   color: #555555;
 }
@@ -140,6 +157,9 @@ body .estimator .nf-field-label > label, body .estimator .ninja-forms-field::pla
 body .estimator .ninja-forms-field {
   border-bottom: 1px solid #555555;
   color: black;
+}
+body .estimator textarea.ninja-forms-field {
+  border: 1px solid #555555;
 }
 body .estimator .nf-breadcrumbs .active a {
   color: #9FC417;
@@ -212,8 +232,11 @@ body.dark-mode a {
 body.dark-mode a:hover {
   color: #B1E019;
 }
+body.dark-mode .wp-block-navigation .wp-block-navigation-item__content.wp-block-navigation-item__content:hover {
+  color: #B1E019;
+}
 body.dark-mode #jh-logo path, body.dark-mode #jh-logo rect {
-  fill: #20a8c3;
+  fill: #e0e0e0;
 }
 body.dark-mode h2 em, body.dark-mode h3 em {
   color: #B1E019;
@@ -302,6 +325,9 @@ body.dark-mode #contact .ninja-forms-field {
   border-bottom: 1px solid white;
   color: white;
 }
+body.dark-mode #contact textarea.ninja-forms-field {
+  border: 1px solid white;
+}
 body.dark-mode .estimator .nf-breadcrumbs li a {
   color: #707070;
 }
@@ -317,6 +343,9 @@ body.dark-mode .estimator .nf-field-label > label, body.dark-mode .estimator .ni
 body.dark-mode .estimator .ninja-forms-field {
   border-bottom: 1px solid white;
   color: white;
+}
+body.dark-mode .estimator textarea.ninja-forms-field {
+  border: 1px solid white;
 }
 body.dark-mode .estimator .nf-breadcrumbs .active a {
   color: #B1E019;
@@ -482,6 +511,18 @@ video {
   font-size: 77%;
 }
 
+.nav-wrap {
+  margin-left: 2% !important;
+  margin-right: 2% !important;
+  border-bottom: 1px solid rgba(140, 140, 140, 0.3);
+}
+
+@media screen and (min-width: 600px) {
+  .nav-wrap {
+    margin-left: 5% !important;
+    margin-right: 5% !important;
+  }
+}
 /********************************* 
 * END: HEADER/NAV STYLES         *
 *********************************/
@@ -955,7 +996,7 @@ nav {
 * END: SCROLL-BASED CARD FLIPS   *
 *********************************/
 /*********************************
-* BEGIN: SKILL BLOCK COLUMNS     *
+* BEGIN: SKILL BLOCK             *
 *********************************/
 #toggle-column-2 h3 {
   width: 100%;
@@ -989,12 +1030,6 @@ nav {
   border-radius: 1.2rem;
   min-height: 150px;
 }
-#toggle-column-2 .columns .column ul li:first-child {
-  margin-top: 0;
-}
-#toggle-column-2 .columns .column ul li:last-child {
-  margin-bottom: 0;
-}
 #toggle-column-2 .columns .column ul li em {
   font-style: normal;
   font-size: 1rem;
@@ -1002,19 +1037,19 @@ nav {
   width: 100%;
 }
 @media screen and (min-width: 500px) {
-  #toggle-column-2 .columns {
+  #toggle-column-2 .columns ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media screen and (min-width: 700px) {
-  #toggle-column-2 .columns {
+  #toggle-column-2 .columns ul {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 /*********************************
-* END: SKILL BLOCK COLUMNS       *
+* END: SKILL BLOCKS              *
 *********************************/
 /********************************* 
 * BEGIN: WORK GRID               *
@@ -1211,10 +1246,18 @@ nav {
   margin-left: auto;
   margin-right: auto;
 }
-
-.house {
+#website-cost .house {
+  display: block;
   position: absolute;
   margin-block-start: 0;
+}
+#website-cost .wp-block-columns .wp-block-column:last-of-type {
+  display: none;
+}
+@media screen and (min-width: 785px) {
+  #website-cost .wp-block-columns .wp-block-column:last-of-type {
+    display: block;
+  }
 }
 
 /********************************* 
@@ -1262,6 +1305,31 @@ nav {
   display: none;
 }
 
+.nf-form-content .one-half {
+  width: 100%;
+  margin-left: 0;
+  float: none;
+}
+
+@media screen and (min-width: 550px) {
+  .nf-form-content .one-half {
+    width: 48.7179487179%;
+    margin-left: 2.5641025641%;
+    float: left;
+  }
+  .nf-form-content .first {
+    margin-left: 0;
+  }
+}
+.nf-breadcrumbs {
+  flex-direction: column;
+}
+
+@media screen and (min-width: 550px) {
+  .nf-breadcrumbs {
+    flex-direction: row;
+  }
+}
 .ninja-forms-field {
   border: none;
   padding: 0.3rem;
@@ -1305,7 +1373,7 @@ textarea.ninja-forms-field {
 }
 
 /* Only for Estimator Form */
-.scope-counter {
+.scope-counter, .scope-total {
   display: none;
 }
 

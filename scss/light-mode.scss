@@ -1,8 +1,7 @@
 /* Light Variables */
-$logo-color: #16798d;
+$logo-color: #707070;
 $dkgray: #555555;
 $ltgray: #E0E0E0;
-$nav-border: $ltgray;
 $background: #fff;
 $icon-color: #B1E019;
 $link-base: $dkgray;                                                        
@@ -32,6 +31,8 @@ $cost-heading-base: #000;
 $cost-heading-highlight: #1261be; 
 $cost-type: #000; 
 $cost-bg-gradient: linear-gradient(75deg, #cee8fe 0%, #7EB0DD 100%); 
+$cost-button-type: #fff;
+$cost-button-gradient: linear-gradient(180deg, #44C6E7 0%, #206DC4 100%); 
 //Contact Section
 $contact-type-base: #000; 
 $contact-type-highlight: #1E8AC3; 
@@ -57,6 +58,9 @@ body {
     &:hover{
       color: $link-hover;
     } 
+  }
+  .wp-block-navigation .wp-block-navigation-item__content.wp-block-navigation-item__content:hover {
+    color: $link-hover;
   }
   #jh-logo {
     path, rect {
@@ -131,6 +135,17 @@ body {
         color: $cost-heading-highlight;
       }
     }
+    .wp-block-button__link {
+      background: $button-gradient;
+      box-shadow: 5px 5px 2px 0px $button-shadow;
+      color: $cost-button-type;
+      background: $cost-button-gradient;
+      &:hover {
+        color: $button-hover-text;
+        background:$button-gradient-hover; 
+        transition: all ease .5s;
+      }
+    }
   }
   #contact {
     background: $contact-bg-gradient;
@@ -160,6 +175,9 @@ body {
       border-bottom: 1px solid $contact-field-border;
       color: black;
     }
+    textarea.ninja-forms-field {
+      border: 1px solid $contact-field-border;
+    }
   }
   //Estimator
   .estimator {
@@ -179,6 +197,9 @@ body {
     .ninja-forms-field {
       border-bottom: 1px solid $contact-field-border;
       color: black;
+    }
+    textarea.ninja-forms-field {
+      border: 1px solid $contact-field-border;
     }
     .nf-breadcrumbs {
       .active {

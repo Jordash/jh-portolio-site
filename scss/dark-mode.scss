@@ -1,5 +1,5 @@
 /* Dark Variables */
-$logo-color: #20a8c3;
+$logo-color: #e0e0e0;
 $dkgray: #707070;
 $ltgray: #E0E0E0;
 $nav-border: #8b8989;
@@ -57,6 +57,9 @@ body.dark-mode {
     &:hover{
       color: $link-hover;
     } 
+  }
+  .wp-block-navigation .wp-block-navigation-item__content.wp-block-navigation-item__content:hover {
+    color: $link-hover;
   }
   #jh-logo {
     path, rect {
@@ -155,6 +158,9 @@ body.dark-mode {
       border-bottom: 1px solid $contact-field-border;
       color: white;
     }
+    textarea.ninja-forms-field {
+      border: 1px solid $contact-field-border;
+    }
   }
 
   //Estimator
@@ -175,6 +181,9 @@ body.dark-mode {
     .ninja-forms-field {
       border-bottom: 1px solid $contact-field-border;
       color: white;
+    }
+    textarea.ninja-forms-field {
+      border: 1px solid $contact-field-border;
     }
     .nf-breadcrumbs {
       .active {

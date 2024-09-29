@@ -7,7 +7,7 @@
 *  - TYPOGRAPHY
 *  - TOGGLE COLUMNS
 *  - SCROLL-BASED CARD FLIPS 
-*  - SKILL BLOCK COLUMNS
+*  - SKILL BLOCKS
 *  - WORK GRID
 *  - WEBAWARDS SECTION
 *  - WEBSITE ESTIMATOR
@@ -146,21 +146,23 @@ video { max-width: 100%; height: auto; }
   }
 }
 
+.nav-wrap {
+  margin-left: 2% !important;
+  margin-right: 2% !important;
+  border-bottom: 1px solid rgba(140, 140, 140, 0.3);
+}
+@media screen and (min-width: 600px){
+  .nav-wrap {
+    margin-left: 5% !important;
+    margin-right: 5% !important;
+  }
+}
+
 /********************************* 
 * END: HEADER/NAV STYLES         *
 *********************************/
 
-//Ex 2 Check media query and support
-@media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: scroll()) {
-    div {
-      // animation: fly-in linear both;
-      // animation-timeline: scroll();
-      // border: 2px solid red;
-    }
-  }
-}
-//Ex 3 Animate when in view
+//Animate when in view
 @keyframes scale-up {
   from {
     scale: .5;
@@ -171,7 +173,6 @@ figure img:not(#home-screens figure img, .house img) {
   animation-timeline: view();
   animation-range: 25vh 75vh;
 }
-
 
 /********************************* 
 * BEGIN: HOME STYLES             *
@@ -574,7 +575,7 @@ nav {
 *********************************/
 
 /*********************************
-* BEGIN: SKILL BLOCK COLUMNS     *
+* BEGIN: SKILL BLOCK             *
 *********************************/
 
 #toggle-column-2 {
@@ -606,8 +607,8 @@ nav {
           margin: 1.5rem 0;
           border-radius: 1.2rem;
           min-height: 150px;
-          &:first-child { margin-top: 0; }
-          &:last-child { margin-bottom: 0; }
+          // &:first-child { margin-top: 0; }
+          // &:last-child { margin-bottom: 0; }
           em {
             font-style: normal;
             font-size: 1rem;
@@ -619,21 +620,24 @@ nav {
     }
   }
   @media screen and (min-width: 500px) {
-    .columns {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+    .columns { 
+      ul {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
-    
   }
   @media screen and (min-width: 700px) {
     .columns {
-      grid-template-columns: repeat(3, 1fr);
-    } 
+      ul {
+        grid-template-columns: repeat(3, 1fr);
+      } 
+    }
   }
 }
 
 /*********************************
-* END: SKILL BLOCK COLUMNS       *
+* END: SKILL BLOCKS              *
 *********************************/
 
 
@@ -821,10 +825,19 @@ nav {
   .wp-block-columns, h2, .wp-block-buttons {
     @include max-width-container;
   }
-}
-.house {
-  position: absolute;
-  margin-block-start: 0;
+  .house {
+    display: block;
+    position: absolute;
+    margin-block-start: 0;
+  } 
+  .wp-block-columns .wp-block-column:last-of-type {
+    display: none;
+  }
+  @media screen and (min-width:785px) {
+    .wp-block-columns .wp-block-column:last-of-type {
+      display: block;
+    }
+  }
 }
 
 /********************************* 
@@ -878,6 +891,29 @@ nav {
 .ninja-forms-req-symbol { /* Remove Required Asterisk */
   display: none;
 }
+.nf-form-content .one-half {
+  width: 100%;
+  margin-left: 0;
+  float: none;
+}
+@media screen and (min-width: 550px) {
+  .nf-form-content .one-half {
+    width: 48.7179487179%;
+    margin-left: 2.5641025641%;
+    float: left;
+  }
+  .nf-form-content .first {
+    margin-left: 0;
+  }
+}
+.nf-breadcrumbs {
+  flex-direction: column;
+}
+@media screen and (min-width: 550px) {
+  .nf-breadcrumbs {
+    flex-direction: row;
+  }
+}
 
 .ninja-forms-field {
   border: none;
@@ -911,7 +947,7 @@ textarea.ninja-forms-field {
 }
 
 /* Only for Estimator Form */
-.scope-counter {
+.scope-counter, .scope-total {
   //shows cumulative total while progressing through fields
   //only necessary for testing
   display: none;
